@@ -4,7 +4,7 @@ const BlogList = ( { posts } ) => (
     _.map(
       posts,
       (post) => (
-        React.createElement(BlogItem, { props: { text: post.text, image: { src: post.image },  key: post.id }})
+        React.createElement(BlogItem, { text: post.text, image: post.image, key: post.id })
       )
     )
   )

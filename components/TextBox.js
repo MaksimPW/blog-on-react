@@ -1,7 +1,7 @@
-const TextBox = ({ text }) => (
-  <span>{text}</span>
+const TextBox = (props) => (
+  <span>{props.children}</span>
 );
 
 TextBox.defaultProps = {
-  text: 'default text',
-};
+  children: 'default text',
+}

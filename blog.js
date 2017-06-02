@@ -16,31 +16,31 @@ const posts = [
   }
 ];
 
-const Image = ({ image }) => (
-  <img src={image.src} width={image.width} height={image.height} alt={image.alt}/>
+const Image = (props) => (
+  <img src={props.src} width={props.width} height={props.height} alt={props.alt}/>
 );
 
-// TODO: Need fix. Now it not work
+
 Image.defaultProps = {
   src: 'http://maksim.pw/wp-content/uploads/2016/09/05OB6lDjCQvsXlwMc-C_T_qMMU3qjtEZ3Uz18-9f3kiewcVM-508x381.jpg',
   alt: 'default alt',
-  width: '100',
-  height: '100',
+  width: '200',
+  height: '200',
 };
 
-const TextBox = ({ text }) => (
-  <span>{text}</span>
+const TextBox = (props) => (
+  <span>{props.children}</span>
 );
 
 TextBox.defaultProps = {
-  text: 'default text',
-};
+  children: 'default text',
+}
 
-const BlogItem = ({ props }) => (
+const BlogItem = (props) => (
   DOM.div(
     { },
-    React.createElement(Image, { image: props.image }),
-    React.createElement(TextBox, { text: props.text }),
+    React.createElement(Image, { src: props.image }),
+    React.createElement(TextBox, {}, props.text ),
   )
 );
 
@@ -50,7 +50,7 @@ const BlogList = ( { posts } ) => (
     _.map(
       posts,
       (post) => (
-        React.createElement(BlogItem, { props: { text: post.text, image: { src: post.image },  key: post.id }})
+        React.createElement(BlogItem, { text: post.text, image: post.image, key: post.id })
       )
     )
   )
