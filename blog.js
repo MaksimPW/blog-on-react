@@ -118,16 +118,17 @@ Like.propTypes = {
   count: PropTypes.number
 }
 
-const BlogItem = (props) => (
+const BlogItem = ({ id, image, details, text }) => (
   DOM.div(
     { },
-    React.createElement(Image, props.image),
-    React.createElement(DetailsBox, props.details),
-    React.createElement(TextBox, {}, props.text ),
+    React.createElement(Image, image),
+    React.createElement(DetailsBox, details),
+    React.createElement(TextBox, {}, text ),
   )
 )
 
 BlogItem.propTypes = {
+  id: PropTypes.number,
   image: PropTypes.object,
   details: PropTypes.object,
   text: PropTypes.string
@@ -139,7 +140,7 @@ const BlogList = ( { posts } ) => (
     _.map(
       posts,
       (post) => (
-        React.createElement(BlogItem, { text: post.text, details: post.details, image: post.image, key: post.id })
+        React.createElement(BlogItem, _.assign({}, post, { key: post.id }))
       )
     )
   )
