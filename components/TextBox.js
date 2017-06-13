@@ -5,3 +5,7 @@ const TextBox = (props) => (
 TextBox.defaultProps = {
   children: 'default text',
 }
+
+TextBox.propTypes = {
+  children: PropTypes.string
+}
