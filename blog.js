@@ -11,9 +11,9 @@ const posts = [
     details: {
       author: 'Andrey',
       createdAt: moment("20170101", "YYYYMMDD").fromNow(),
-      updatedAt: moment("20170401", "YYYYMMDD").fromNow(),
-      likes: 10,
-    }
+      updatedAt: moment("20170401", "YYYYMMDD").fromNow()
+    },
+    likes: 10
   },
   {
    id: 1,
@@ -24,9 +24,9 @@ const posts = [
    details: {
       author: 'Zahar',
       createdAt: moment("20160101", "YYYYMMDD").fromNow(),
-      updatedAt: moment("20160901", "YYYYMMDD").fromNow(),
-      likes: 5,
-   }
+      updatedAt: moment("20160901", "YYYYMMDD").fromNow()
+   },
+   likes: 5
   },
   {
    id: 2,
@@ -70,60 +70,47 @@ const DetailsBox = (props) => (
     <p>Author: {props.author}</p>
     <p>createdAt: {props.createdAt}</p>
     <p>updatedAt: {props.updatedAt}</p>
-    <Like count ={props.likes} />
   </div>
 )
 
 DetailsBox.defaultProps = {
   author: 'Admin',
   createdAt: moment("19700101", "YYYYMMDD").fromNow(),
-  updatedAt: moment("20170420", "YYYYMMDD").fromNow(),
-  likes: 0
+  updatedAt: moment("20170420", "YYYYMMDD").fromNow()
 }
 
 DetailsBox.propTypes = {
   author: PropTypes.string,
   createdAt: PropTypes.string,
-  updatedAt: PropTypes.string,
-  likes: PropTypes.number
+  updatedAt: PropTypes.string
 }
 
-class Like extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { count: props.count };
-
-    this.handleClick = bind(this.handleClick, this);
-  }
-
-  handleClick() {
-    this.setState({ count: this.state.count + 1 })
-  }
-
-  render() {
-    return (
-      <div>
-        <p>Count: {this.state.count}</p>
-        <button onClick={this.handleClick}>Like +</button>
-      </div>
-    )
-  }
-}
+const Like = ({count, likeAdd, postId}) => (
+  <div>
+    <button onClick={()=> likeAdd(postId)}>
+      Like+
+    </button>
+      {count}
+  </div>
+)
 
 Like.defaultProps = {
   count: 0
 }
 
 Like.propTypes = {
-  count: PropTypes.number
+  count: PropTypes.number,
+  likeAdd: PropTypes.func.isRequired,
+  postId: PropTypes.number
 }
 
-const BlogItem = ({ id, image, details, text }) => (
+const BlogItem = ({ id, image, details, text, likes, likeAdd }) => (
   DOM.div(
     { },
     React.createElement(Image, image),
     React.createElement(DetailsBox, details),
     React.createElement(TextBox, {}, text ),
+    React.createElement(Like, {count: likes, likeAdd: likeAdd, postId: id})
   )
 )
 
@@ -131,16 +118,18 @@ BlogItem.propTypes = {
   id: PropTypes.number,
   image: PropTypes.object,
   details: PropTypes.object,
-  text: PropTypes.string
+  text: PropTypes.string,
+  likes: PropTypes.number,
+  likeAdd: PropTypes.func.isRequired
 }
 
-const BlogList = ( { posts } ) => (
+const BlogList = ( { posts, likeAdd } ) => (
   DOM.div(
     { },
     _.map(
       posts,
       (post) => (
-        React.createElement(BlogItem, _.assign({}, post, { key: post.id }))
+        React.createElement(BlogItem, _.assign({}, post, { key: post.id, likeAdd: likeAdd }))
       )
     )
   )
@@ -148,10 +137,38 @@ const BlogList = ( { posts } ) => (
 
 
 BlogList.propTypes = {
-  posts:  PropTypes.arrayOf(PropTypes.object)
+  posts:  PropTypes.arrayOf(PropTypes.object),
+  likeAdd: PropTypes.func.isRequired
+}
+
+class BlogPage extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = { posts };
+    this.likeAdd = this.likeAdd.bind(this);
+  }
+
+  likeAdd(postId) {
+    this.state.posts.map((post)=> {
+      if (postId == post.id) {
+        post.likes++;
+        return post;
+      }
+    });
+
+    this.setState({posts: posts})
+  }
+
+  render() {
+    const { posts } = this.state;
+    return (
+      <BlogList posts={posts} likeAdd={this.likeAdd} />
+    )
+  }
 }
 
 ReactDOM.render(
-  React.createElement(BlogList, { posts }),
+  React.createElement(BlogPage, { posts }),
   document.getElementById('app')
 );
