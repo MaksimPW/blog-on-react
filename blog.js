@@ -141,6 +141,31 @@ BlogList.propTypes = {
   likeAdd: PropTypes.func.isRequired
 }
 
+class Chart extends React.Component {
+  componentDidMount() {
+    this.chart = c3.generate({
+      bindto: ReactDOM.findDOMNode(this.refs.chart),
+      data: { columns: this.props.columns, type : 'pie' }
+    });
+  }
+
+  componentWillUnmount() {
+    this.chart.destroy();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props != nextProps) {
+      this.chart.load({ columns: nextProps.columns });
+    }
+  }
+
+  render() {
+    return (
+      <div ref="chart"> </div>
+    )
+  }
+}
+
 class BlogPage extends React.Component {
   constructor(props){
     super(props);
@@ -162,11 +187,19 @@ class BlogPage extends React.Component {
 
   render() {
     const { posts } = this.state;
+
     return (
-      <BlogList posts={posts} likeAdd={this.likeAdd} />
+      <div>
+        <BlogList posts={posts} likeAdd={this.likeAdd} />
+        <Chart columns={posts.map((post)=>[
+            post.text || TextBox.defaultProps.children,
+            post.likes || Like.defaultProps.count ])
+                     } />
+      </div>
     )
   }
 }
+
 
 ReactDOM.render(
   React.createElement(BlogPage, { posts }),
