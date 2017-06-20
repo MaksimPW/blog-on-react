@@ -3,20 +3,17 @@ const DetailsBox = (props) => (
     <p>Author: {props.author}</p>
     <p>createdAt: {props.createdAt}</p>
     <p>updatedAt: {props.updatedAt}</p>
-    <Like count ={props.likes} />
   </div>
 )
 
 DetailsBox.defaultProps = {
   author: 'Admin',
   createdAt: moment("19700101", "YYYYMMDD").fromNow(),
-  updatedAt: moment("20170420", "YYYYMMDD").fromNow(),
-  likes: 0
+  updatedAt: moment("20170420", "YYYYMMDD").fromNow()
 }
 
 DetailsBox.propTypes = {
   author: PropTypes.string,
   createdAt: PropTypes.string,
-  updatedAt: PropTypes.string,
-  likes: PropTypes.number
+  updatedAt: PropTypes.string
 }
