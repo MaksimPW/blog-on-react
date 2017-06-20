@@ -177,6 +177,9 @@ class BlogPage extends React.Component {
   likeAdd(postId) {
     this.state.posts.map((post)=> {
       if (postId == post.id) {
+        if (post.likes == null) {
+          post.likes = 0;
+        }
         post.likes++;
         return post;
       }
