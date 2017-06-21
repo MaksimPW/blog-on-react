@@ -7,17 +7,14 @@ class BlogPage extends React.Component {
   }
 
   likeAdd(postId) {
-    this.state.posts.map((post)=> {
-      if (postId == post.id) {
-        if (post.likes == null) {
-          post.likes = 0;
-        }
-        post.likes++;
-        return post;
+    let updatedPosts = Object.assign({}, this.state.posts);
+    if (updatedPosts[postId].length != 0) {
+      if (updatedPosts[postId]['likes'] == null){
+        updatedPosts[postId]['likes'] = 0;
       }
-    });
-
-    this.setState({posts: posts})
+      updatedPosts[postId]['likes']++;
+      this.setState(updatedPosts);
+    }
   }
 
   render() {
