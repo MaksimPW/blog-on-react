@@ -4,7 +4,7 @@ const BlogList = ( { posts, likeAdd } ) => (
     _.map(
       posts,
       (post) => (
-        React.createElement(BlogItem, _.assign({}, post, { key: post.id, likeAdd: likeAdd }))
+        React.createElement(BlogItem, _.assign({}, post, { key: post.id, likeAdd: () => likeAdd(post.id) }))
       )
     )
   )

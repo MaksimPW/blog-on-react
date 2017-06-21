@@ -110,7 +110,7 @@ const BlogItem = ({ id, image, details, text, likes, likeAdd }) => (
     React.createElement(Image, image),
     React.createElement(DetailsBox, details),
     React.createElement(TextBox, {}, text ),
-    React.createElement(Like, {count: likes, likeAdd: likeAdd, postId: id})
+    React.createElement(Like, {count: likes, likeAdd: likeAdd})
   )
 )
 
@@ -129,7 +129,7 @@ const BlogList = ( { posts, likeAdd } ) => (
     _.map(
       posts,
       (post) => (
-        React.createElement(BlogItem, _.assign({}, post, { key: post.id, likeAdd: likeAdd }))
+        React.createElement(BlogItem, _.assign({}, post, { key: post.id, likeAdd: () => likeAdd(post.id) }))
       )
     )
   )
