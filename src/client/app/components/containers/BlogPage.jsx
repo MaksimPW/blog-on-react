@@ -1,4 +1,6 @@
 import React from 'react';
+import update from 'immutability-helper';
+
 import BlogList from '../ui/BlogList';
 import Chart from '../ui/Chart';
 import TextBox from '../ui/TextBox';
@@ -13,19 +15,26 @@ export default class BlogPage extends React.Component {
   }
 
   likeAdd(postId) {
-    let updatedPosts = Object.assign({}, this.state.posts);
-    if (updatedPosts[postId].length != 0) {
-      if (updatedPosts[postId]['likes'] == null){
-        updatedPosts[postId]['likes'] = 0;
-      }
-      updatedPosts[postId]['likes']++;
-      this.setState(updatedPosts);
+	  const currentPost = this.state.posts[postId];
+    let updatedPost = {};
+
+    if (currentPost['likes'] == null){
+      updatedPost = update(currentPost, { likes: {$set: 1 }});
+    } else {
+      updatedPost = update(currentPost, { likes: {$set: (currentPost.likes + 1) }});
     }
+
+    this.setState({
+	    posts: this.state.posts
+      .slice(0, postId)
+      .concat(updatedPost)
+		  .concat(this.state.posts.slice(postId +1))
+	  });
   }
 
   render() {
     const { posts } = this.state;
-    
+
     return (
       <div>
         <BlogList posts={posts} likeAdd={this.likeAdd} />
@@ -37,4 +46,3 @@ export default class BlogPage extends React.Component {
     )
   }
 }
-
