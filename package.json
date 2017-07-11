@@ -30,6 +30,7 @@
   "devDependencies": {
     "babel-core": "^6.24.1",
     "babel-preset-latest": "^6.24.1",
-    "babel-register": "^6.24.1"
+    "babel-register": "^6.24.1",
+    "eslint": "^4.2.0"
   }
 }
