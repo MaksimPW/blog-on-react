@@ -1,7 +1,6 @@
 import React from 'react';
-import moment from 'moment';
 
-import BlogPage from './components/containers/BlogPage'; 
+import BlogPage from './components/containers/BlogPage';
 import { posts } from './constants/static/posts';
 
 const App = () => (
@@ -9,4 +8,3 @@ const App = () => (
 );
 
 export default App;
-

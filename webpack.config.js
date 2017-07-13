@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 var webpack = require('webpack');
 var path = require('path');
 
@@ -6,10 +8,13 @@ var APP_DIR = path.resolve(__dirname, 'src/client/app');
 
 var config = {
   entry: APP_DIR + '/index.jsx',
+
   output: {
     path: BUILD_DIR,
+    publicPath: '/assets/',
     filename: 'bundle.js'
   },
+
   module : {
     loaders : [
       {
@@ -19,6 +24,7 @@ var config = {
       }
     ]
   },
+
   resolve: {
     extensions: [".js", ".jsx"],
     modules: [

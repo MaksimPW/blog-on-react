@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const posts = [
   {
    id: 0,
@@ -30,4 +32,3 @@ export const posts = [
    text: 'Полумарафон'
   }
 ];
-

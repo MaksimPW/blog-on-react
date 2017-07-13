@@ -7,7 +7,7 @@ import TextBox from '../ui/TextBox';
 import Like from '../ui/Like';
 
 export default class BlogPage extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     this.state = { posts: props.posts };
@@ -18,7 +18,7 @@ export default class BlogPage extends React.Component {
 	  const currentPost = this.state.posts[postId];
     let updatedPost = {};
 
-    if (currentPost['likes'] == null){
+    if (currentPost['likes'] == null) {
       updatedPost = update(currentPost, { likes: {$set: 1 }});
     } else {
       updatedPost = update(currentPost, { likes: {$set: (currentPost.likes + 1) }});
