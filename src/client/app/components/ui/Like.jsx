@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Like = ({count, likeAdd, postId}) => (  
+const Like = ({count, likeAdd, postId}) => (
   <div>
-    <button onClick={()=> likeAdd(postId)}>
-      Like+
+    <button className='like' onClick={()=> likeAdd(postId)}>
+      Like {count}
     </button>
-      {count}
   </div>
 )
 

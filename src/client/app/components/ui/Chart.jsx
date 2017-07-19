@@ -8,7 +8,7 @@ class Chart extends React.Component {
       data: { columns: this.props.columns, type : 'pie' }
     });
   }
-  
+
   componentWillUnmount() {
     this.chart.destroy();
   }
@@ -18,12 +18,12 @@ class Chart extends React.Component {
       this.chart.load({ columns: nextProps.columns });
     }
   }
-  
+
   render() {
     return (
       <div ref="chart"> </div>
     )
-  }  
+  }
 }
 
 export default Chart;

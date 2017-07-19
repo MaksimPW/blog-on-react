@@ -7,12 +7,14 @@ import TextBox from './TextBox';
 import Like from './Like';
 
 const BlogItem = ({ id, image, details, text, likes, likeAdd }) => (
-  <div>
-	<Image {...image} />
-	<DetailsBox {...details} />
-	<TextBox>{text}</TextBox>
-	<Like count={likes} likeAdd={likeAdd} />
-  </div> 
+  <div className="blog_item">
+    <Image {...image} />
+    <div className="container">
+      <DetailsBox {...details} />
+      <TextBox>{text}</TextBox>
+      <Like count={likes} likeAdd={likeAdd} />
+    </div>
+  </div>
 )
 
 BlogItem.propTypes = {

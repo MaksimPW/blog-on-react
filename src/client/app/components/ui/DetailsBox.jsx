@@ -3,11 +3,11 @@ import moment from 'moment';
 import PropTypes from 'prop-types';
 
 const DetailsBox = (props) => (
-  <div>
-    <p>Author: {props.author}</p>
+  <div className="details_box">
+    <b><p>Author: {props.author}</p></b>
     <p>createdAt: {props.createdAt}</p>
     <p>updatedAt: {props.updatedAt}</p>
-  </div>
+</div>
 )
 
 DetailsBox.defaultProps = {
