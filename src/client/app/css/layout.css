@@ -1,5 +1,6 @@
 html, body {
   height: 100%;
+  background: #eee;
 }
 
 .blog_item {
@@ -32,4 +33,11 @@ html, body {
   text-decoration: none;
   display: inline-block;
   font-size: 13px;
+}
+
+.blog_list {
+  width: 100%;
+  margin: 10px auto;
+  position: relative;
+  text-align:center;
 }

@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "b95b05aaab4176d53620"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "65dc5f6a866066a203c7"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -14545,7 +14545,7 @@ exports = module.exports = __webpack_require__(574)(undefined);
 
 
 // module
-exports.push([module.i, "html, body {\n  height: 100%;\n}\n\n.blog_item {\n  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n  margin: 10px;\n  width: 200px;\n  display:inline-block;\n}\n\n.blog_item:hover {\n  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.container {\n  padding: 10px 16px;\n}\n\n.details_box {\n  line-height: 0.1em;\n  font-style: italic;\n}\n\n.like {\n  background-color: #4CAF50;\n  border: none;\n  color: white;\n  text-align: center;\n  float: right;\n  margin: 10px 1px;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 13px;\n}\n", ""]);
+exports.push([module.i, "html, body {\n  height: 100%;\n  background: #eee;\n}\n\n.blog_item {\n  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);\n  margin: 10px;\n  width: 200px;\n  display:inline-block;\n}\n\n.blog_item:hover {\n  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);\n}\n\n.container {\n  padding: 10px 16px;\n}\n\n.details_box {\n  line-height: 0.1em;\n  font-style: italic;\n}\n\n.like {\n  background-color: #4CAF50;\n  border: none;\n  color: white;\n  text-align: center;\n  float: right;\n  margin: 10px 1px;\n  text-decoration: none;\n  display: inline-block;\n  font-size: 13px;\n}\n\n.blog_list {\n  width: 100%;\n  margin: 10px auto;\n  position: relative;\n  text-align:center;\n}\n", ""]);
 
 // exports
 
@@ -58001,7 +58001,7 @@ var BlogList = function BlogList(_ref) {
       _likeAdd = _ref.likeAdd;
   return _react2.default.createElement(
     'div',
-    null,
+    { className: 'blog_list' },
     _.map(posts, function (post) {
       return _react2.default.createElement(_BlogItem2.default, _.assign({}, post, { key: post.id, likeAdd: function likeAdd() {
           return _likeAdd(post.id);

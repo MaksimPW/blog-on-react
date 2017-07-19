@@ -6,7 +6,7 @@ import BlogItem from './BlogItem';
 
 
 const BlogList = ( { posts, likeAdd } ) => (
-  <div>
+  <div className="blog_list">
 	{
 		_.map(
       posts,
