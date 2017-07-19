@@ -7,7 +7,12 @@ var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
 var APP_DIR = path.resolve(__dirname, 'src/client/app');
 
 var config = {
-  entry: APP_DIR + '/index.jsx',
+  entry: [
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:3030',
+    'webpack/hot/only-dev-server',
+    APP_DIR + '/index.jsx'
+  ],
 
   output: {
     path: BUILD_DIR,
@@ -31,7 +36,11 @@ var config = {
       "node_modules",
       './src'
     ]
-  }
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 };
 
 module.exports = config;

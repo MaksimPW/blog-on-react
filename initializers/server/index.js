@@ -5,6 +5,7 @@ const host = 'localhost';
 const port = 3030;
 
 const server = new webpackDevServer(webpack(config), {
+  hot: true,
   publicPath: config.output.publicPath,
   stats: {
     colors: true
