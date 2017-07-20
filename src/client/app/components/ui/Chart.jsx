@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
-
+import c3 from 'c3';
 
 class Chart extends React.Component {
   componentDidMount() {
@@ -29,7 +29,7 @@ class Chart extends React.Component {
 }
 
 Chart.propTypes = {
-  columns: PropTypes.arrayOf(PropTypes.object)
+  columns: PropTypes.array
 };
 
 export default Chart;

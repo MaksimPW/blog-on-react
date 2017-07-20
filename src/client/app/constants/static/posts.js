@@ -4,7 +4,7 @@ export const posts = [
   {
     id: 0,
     image: {
-      src: 'http://maksim.pw/wp-content/uploads/2017/01/yXa_Zvmys_-ToDOhci2TupdbratAP4cvUQFXdxKTLScDJmxS-508x381.jpg',
+      src: require('../../img/0.jpg'),
       alt: 'kek'
     },
     details: {
@@ -17,7 +17,7 @@ export const posts = [
   {
     id: 1,
     image: {
-      src: 'http://maksim.pw/wp-content/uploads/2016/08/kurs-973x730.jpg'
+      src: require('../../img/1.jpg')
     },
     text: 'Отзыв о курсе',
     details: {
