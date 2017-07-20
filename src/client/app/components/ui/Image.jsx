@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Image = (props) => (
-	<img {...props} />
+  <img {...props} />
 );
 
 
@@ -18,6 +18,6 @@ Image.propTypes = {
   alt: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string
-}
+};
 
 export default Image;

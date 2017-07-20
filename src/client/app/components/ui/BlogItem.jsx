@@ -6,7 +6,7 @@ import DetailsBox from './DetailsBox';
 import TextBox from './TextBox';
 import Like from './Like';
 
-const BlogItem = ({ id, image, details, text, likes, likeAdd }) => (
+const BlogItem = ({ image, details, text, likes, likeAdd }) => (
   <div className="blog_item">
     <Image {...image} />
     <div className="container">
@@ -15,7 +15,7 @@ const BlogItem = ({ id, image, details, text, likes, likeAdd }) => (
       <Like count={likes} likeAdd={likeAdd} />
     </div>
   </div>
-)
+);
 
 BlogItem.propTypes = {
   id: PropTypes.number,
@@ -24,6 +24,6 @@ BlogItem.propTypes = {
   text: PropTypes.string,
   likes: PropTypes.number,
   likeAdd: PropTypes.func.isRequired
-}
+};
 
 export default BlogItem;

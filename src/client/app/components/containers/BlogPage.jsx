@@ -1,5 +1,6 @@
 import React from 'react';
 import update from 'immutability-helper';
+import PropTypes from 'prop-types';
 
 import BlogList from '../ui/BlogList';
 import Chart from '../ui/Chart';
@@ -15,21 +16,22 @@ export default class BlogPage extends React.Component {
   }
 
   likeAdd(postId) {
-	  const currentPost = this.state.posts[postId];
+    const currentPost = this.state.posts[postId];
     let updatedPost = {};
 
     if (currentPost['likes'] == null) {
       updatedPost = update(currentPost, { likes: {$set: 1 }});
     } else {
-      updatedPost = update(currentPost, { likes: {$set: (currentPost.likes + 1) }});
+      updatedPost =
+        update(currentPost, { likes: {$set: (currentPost.likes + 1) }});
     }
 
     this.setState({
-	    posts: this.state.posts
-      .slice(0, postId)
-      .concat(updatedPost)
-		  .concat(this.state.posts.slice(postId +1))
-	  });
+      posts: this.state.posts
+        .slice(0, postId)
+        .concat(updatedPost)
+        .concat(this.state.posts.slice(postId + 1))
+    });
   }
 
   render() {
@@ -38,11 +40,15 @@ export default class BlogPage extends React.Component {
     return (
       <div>
         <BlogList posts={posts} likeAdd={this.likeAdd} />
-	 <Chart columns={posts.map((post)=>[
-            post.text || TextBox.defaultProps.children,
-            post.likes || Like.defaultProps.count ])
-                     } />
+        <Chart columns={posts.map((post) => [
+          post.text || TextBox.defaultProps.children,
+          post.likes || Like.defaultProps.count ])
+        } />
       </div>
-    )
+    );
   }
 }
+
+BlogPage.propTypes = {
+  posts: PropTypes.arrayOf(PropTypes.object),
+};

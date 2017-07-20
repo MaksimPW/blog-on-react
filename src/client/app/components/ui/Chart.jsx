@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+
 
 class Chart extends React.Component {
   componentDidMount() {
@@ -22,8 +24,12 @@ class Chart extends React.Component {
   render() {
     return (
       <div ref="chart"> </div>
-    )
+    );
   }
 }
+
+Chart.propTypes = {
+  columns: PropTypes.arrayOf(PropTypes.object)
+};
 
 export default Chart;
