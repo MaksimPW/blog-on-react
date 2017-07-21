@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import c3 from 'c3';
 
 class Chart extends React.Component {
   componentDidMount() {
@@ -8,7 +10,7 @@ class Chart extends React.Component {
       data: { columns: this.props.columns, type : 'pie' }
     });
   }
-  
+
   componentWillUnmount() {
     this.chart.destroy();
   }
@@ -18,12 +20,16 @@ class Chart extends React.Component {
       this.chart.load({ columns: nextProps.columns });
     }
   }
-  
+
   render() {
     return (
       <div ref="chart"> </div>
-    )
-  }  
+    );
+  }
 }
+
+Chart.propTypes = {
+  columns: PropTypes.array
+};
 
 export default Chart;
