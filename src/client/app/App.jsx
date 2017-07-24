@@ -1,12 +1,16 @@
 import React from 'react';
 
-import BlogPage from './components/containers/BlogPage';
 import { posts } from './constants/static/posts';
+
+import MainLayout from './components/layouts/MainLayout';
+import BlogPage from './components/containers/BlogPage';
 
 import './css/layout.css';
 
 const App = () => (
-  <BlogPage posts={posts} />
+  <MainLayout>
+    <BlogPage posts={posts} />
+  </MainLayout>
 );
 
 export default App;
