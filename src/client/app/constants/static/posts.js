@@ -4,7 +4,7 @@ export const posts = [
   {
     id: 0,
     image: {
-      src: require('../../img/0.jpg'),
+      src: require('./../../img/0.jpg'),
       alt: 'kek'
     },
     details: {
@@ -17,7 +17,7 @@ export const posts = [
   {
     id: 1,
     image: {
-      src: require('../../img/1.jpg')
+      src: require('./../../img/1.jpg')
     },
     text: 'Отзыв о курсе',
     details: {

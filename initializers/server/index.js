@@ -6,6 +6,7 @@ const port = 3030;
 
 const server = new webpackDevServer(webpack(config), {
   hot: true,
+  historyApiFallback: true,
   publicPath: config.output.publicPath,
   stats: {
     colors: true

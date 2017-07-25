@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import update from 'immutability-helper';
-import PropTypes from 'prop-types';
 
 import BlogList from '../ui/BlogList';
 import Chart from '../ui/Chart';
