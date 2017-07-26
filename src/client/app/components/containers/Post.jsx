@@ -3,11 +3,12 @@ import React, { PropTypes } from 'react';
 import BlogItem from './../ui/BlogItem';
 
 import request from 'superagent';
+import _ from 'lodash';
 
 class Post extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { posts: [] } 
+    this.state = { posts: [] };
   }
 
   componentDidMount() {
@@ -17,26 +18,25 @@ class Post extends React.Component {
   fetchPosts() {
     request.get(
       'http://localhost:3031',
-       {},
-       (err, res) => this.setState({ posts: res.body })
+      {},
+      (err, res) => this.setState({ posts: res.body })
     );
   }
 
   render() {
     return (
       <div>
-      {
-        React.createElement(BlogItem,
-          _.assign({}, this.state.posts[this.props.match.params.id],
-            { key: this.props.match.params.id, likeAdd: () => likeAdd(0) }))
-      }
+        {
+          React.createElement(BlogItem,
+            _.assign({}, this.state.posts[this.props.match.params.id]))
+        }
       </div>
     );
   }
 }
 
 Post.propTypes = {
-  params: PropTypes.object
+  match: PropTypes.object
 };
 
 export default Post;
