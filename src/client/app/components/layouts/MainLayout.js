@@ -1,10 +1,14 @@
 import React, { PropTypes } from 'react';
 import Link from './../elements/Link';
+
+import history from './../../helpers/history';
+
 // TODO: import css for Logo, Footer
 
 const MainLayout = ({ children }) => (
   <div>
     <Logo />
+    <GoBackButton />
     {children}
     <Footer />
   </div>
@@ -13,6 +17,12 @@ const MainLayout = ({ children }) => (
 MainLayout.propTypes = {
   children: PropTypes.node
 };
+
+const GoBackButton = () => (
+  <div>
+    <a href='#' onClick={() => history.goBack()}>Назад</a>
+  </div>
+);
 
 const Logo = () => (
   <div>
