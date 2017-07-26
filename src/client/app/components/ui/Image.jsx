@@ -7,7 +7,7 @@ const Image = (props) => (
 
 
 Image.defaultProps = {
-  src: require('./../../img/2.jpg'),
+  src: 'http://localhost:3031/assets/2.jpg',
   alt: 'default alt',
   width: '200px',
   height: '200px'
