@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-
+import Link from './../elements/Link';
 // TODO: import css for Logo, Footer
 
 const MainLayout = ({ children }) => (
@@ -16,7 +16,9 @@ MainLayout.propTypes = {
 
 const Logo = () => (
   <div>
-    <div>Blog</div>
+    <Link to='/'>
+      Blog
+    </Link>
   </div>
 );
 

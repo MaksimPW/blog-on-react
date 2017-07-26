@@ -15,7 +15,7 @@ class Post extends React.Component {
       <div>
       {
         React.createElement(BlogItem,
-          _.assign({}, this.state.posts[this.props.match.params.id - 1],
+          _.assign({}, this.state.posts[this.props.match.params.id],
             { key: this.props.match.params.id, likeAdd: () => likeAdd(0) }))
       }
       </div>
