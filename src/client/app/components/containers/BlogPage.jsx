@@ -6,12 +6,26 @@ import Chart from '../ui/Chart';
 import TextBox from '../ui/TextBox';
 import Like from '../ui/Like';
 
+import request from 'superagent';
+
 export default class BlogPage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { posts: props.posts };
+    this.state = { posts: [] };
     this.likeAdd = this.likeAdd.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    request.get(
+      'http://localhost:3031',
+      {},
+      (err, res) => this.setState({ posts: res.body })
+    );
   }
 
   likeAdd(postId) {

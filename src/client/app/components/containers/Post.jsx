@@ -2,12 +2,24 @@ import React, { PropTypes } from 'react';
 
 import BlogItem from './../ui/BlogItem';
 
-import { posts } from './../../constants/static/posts';
+import request from 'superagent';
 
 class Post extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { posts: posts } 
+    this.state = { posts: [] } 
+  }
+
+  componentDidMount() {
+    this.fetchPosts();
+  }
+
+  fetchPosts() {
+    request.get(
+      'http://localhost:3031',
+       {},
+       (err, res) => this.setState({ posts: res.body })
+    );
   }
 
   render() {
