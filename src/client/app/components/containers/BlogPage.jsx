@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import update from 'immutability-helper';
 
 import BlogList from '../ui/BlogList';
 import Chart from '../ui/Chart';
@@ -22,29 +21,18 @@ export default class BlogPage extends React.Component {
 
   fetchPosts() {
     request.get(
-      'http://localhost:3031',
+      'http://localhost:3000/posts',
       {},
       (err, res) => this.setState({ posts: res.body })
     );
   }
 
   likeAdd(postId) {
-    const currentPost = this.state.posts[postId];
-    let updatedPost = {};
-
-    if (currentPost['likes'] == null) {
-      updatedPost = update(currentPost, { likes: {$set: 1 }});
-    } else {
-      updatedPost =
-        update(currentPost, { likes: {$set: (currentPost.likes + 1) }});
-    }
-
-    this.setState({
-      posts: this.state.posts
-        .slice(0, postId)
-        .concat(updatedPost)
-        .concat(this.state.posts.slice(postId + 1))
-    });
+    request.patch(
+      'http://localhost:3000/posts/'.concat(postId, '/add_like'),
+      {},
+      () => this.fetchPosts()
+    );
   }
 
   render() {
@@ -54,7 +42,7 @@ export default class BlogPage extends React.Component {
       <div>
         <BlogList posts={posts} likeAdd={this.likeAdd} />
         <Chart columns={posts.map((post) => [
-          post.text || TextBox.defaultProps.children,
+          post.title || TextBox.defaultProps.children,
           post.likes || Like.defaultProps.count ])
         } />
       </div>

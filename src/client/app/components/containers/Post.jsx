@@ -8,7 +8,8 @@ import _ from 'lodash';
 class Post extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { posts: [] };
+    this.state = { post: {} };
+    this.likeAdd = this.likeAdd.bind(this);
   }
 
   componentDidMount() {
@@ -17,9 +18,22 @@ class Post extends React.Component {
 
   fetchPosts() {
     request.get(
-      'http://localhost:3031',
+      'http://localhost:3000/posts',
       {},
-      (err, res) => this.setState({ posts: res.body })
+      (err, res) => {
+        const paramsId = this.props.match.params.id;
+        const upPost = res.body.find(post => post.id == paramsId);
+        this.setState({ post: upPost });
+      }
+    );
+  }
+
+  likeAdd() {
+    request.patch(
+      'http://localhost:3000/posts/'
+        .concat(this.props.match.params.id, '/add_like'),
+      {},
+      () => this.fetchPosts()
     );
   }
 
@@ -28,7 +42,9 @@ class Post extends React.Component {
       <div>
         {
           React.createElement(BlogItem,
-            _.assign({}, this.state.posts[this.props.match.params.id]))
+            _.assign({}, this.state.post,
+              { likeAdd: this.likeAdd }
+            ))
         }
       </div>
     );
