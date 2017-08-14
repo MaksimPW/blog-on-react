@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Api from '../../helpers/Api';
+
 const Image = (props) => (
   <img {...props} />
 );
 
 
 Image.defaultProps = {
-  src: 'http://localhost:3031/assets/2.jpg',
+  src: Api.defaultImage,
   alt: 'default alt',
   width: '200px',
   height: '200px'

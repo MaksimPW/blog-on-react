@@ -6,6 +6,7 @@ import TextBox from '../ui/TextBox';
 import Like from '../ui/Like';
 
 import request from 'superagent';
+import Api from '../../helpers/Api';
 
 export default class BlogPage extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class BlogPage extends React.Component {
 
   fetchPosts() {
     request.get(
-      'http://localhost:3000/posts',
+      Api.index,
       {},
       (err, res) => this.setState({ posts: res.body })
     );
@@ -29,7 +30,7 @@ export default class BlogPage extends React.Component {
 
   likeAdd(postId) {
     request.patch(
-      'http://localhost:3000/posts/'.concat(postId, '/add_like'),
+      Api.addLike(postId),
       {},
       () => this.fetchPosts()
     );

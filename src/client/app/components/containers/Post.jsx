@@ -5,6 +5,8 @@ import BlogItem from './../ui/BlogItem';
 import request from 'superagent';
 import _ from 'lodash';
 
+import Api from '../../helpers/Api';
+
 class Post extends React.Component {
   constructor(props) {
     super(props);
@@ -18,7 +20,7 @@ class Post extends React.Component {
 
   fetchPosts() {
     request.get(
-      'http://localhost:3000/posts',
+      Api.index,
       {},
       (err, res) => {
         const paramsId = this.props.match.params.id;
@@ -30,8 +32,7 @@ class Post extends React.Component {
 
   likeAdd() {
     request.patch(
-      'http://localhost:3000/posts/'
-        .concat(this.props.match.params.id, '/add_like'),
+      Api.addLike(this.props.match.params.id),
       {},
       () => this.fetchPosts()
     );
