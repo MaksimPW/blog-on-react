@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 import BlogPage from './../components/containers/BlogPage';
 import Post from './../components/containers/Post';
 
-import { postsPath } from './paths';
+import { postsPath } from './../helpers/routes/paths';
 
 const Routes = () => (
   <Switch>

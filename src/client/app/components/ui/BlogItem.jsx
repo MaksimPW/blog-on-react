@@ -6,7 +6,7 @@ import DetailsBox from './DetailsBox';
 import TextBox from './TextBox';
 import Like from './Like';
 import Link from './../elements/Link';
-import { postsPath } from './../../routes/paths';
+import { postsPath } from './../../helpers/routes/paths';
 
 const BlogItem = ({ id, image, details, title, likes, likeAdd }) => (
   <div className="blog_item">
