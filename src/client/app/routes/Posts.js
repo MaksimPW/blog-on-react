@@ -1,10 +1,10 @@
 import { fetchPosts } from './../actions/Posts';
-import BlogPage from './../components/containers/BlogPage';
+import PostsContainer from './../containers/PostsContainer';
 
 const PostsRoute = {
   exact: true,
   path: '/',
-  component: BlogPage,
+  component: PostsContainer,
   prepareData: (store) => {
     store.dispatch(fetchPosts())
   }

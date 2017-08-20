@@ -1,6 +1,6 @@
 import { assign } from 'lodash';
 
-import * as types from './../constants/actionTypes/PostsActionTypes';
+import * as types from './../constants/actionTypes/PostActionTypes';
 
 const initialState = {
   isFetching: false,
@@ -9,13 +9,13 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  switch(action) {
+  switch(action.type) {
     case types.FETCH_POST_REQUEST:
       return assign({}, initialState, { isFetching: true });
     case types.FETCH_POST_ERROR:
       return assign({}, initialState, { error: true });
     case types.FETCH_POST_SUCCESS:
-      return assign({}, initialState, { entry: action.response });
+      return assign({}, initialState, { entry: action.res });
     default:
       return state;
   }
