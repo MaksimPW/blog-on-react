@@ -5,10 +5,9 @@ import { map } from 'lodash/collection';
 
 export default function(store, state) {
   const { location, params, routes } = state;
+  const query = parse(location.search.substr(1));
 
-  const quesrt = parse(location.search.substr(1));
-
-  const prepreDataFns = compact(map(routes, route => route.prepareData));
+  const prepareDataFns = compact(map(routes, route => route.prepareData));
 
   map(
     prepareDataFns,
