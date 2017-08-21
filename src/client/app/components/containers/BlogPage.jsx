@@ -26,7 +26,7 @@ export default class BlogPage extends React.Component {
 
     return (
       <div>
-        <BlogList posts={posts} likeAdd={this.likeAdd} />
+        <BlogList posts={posts} />
         <Chart columns={posts.map((post) => [
           post.title || TextBox.defaultProps.children,
           post.likes || Like.defaultProps.count ])

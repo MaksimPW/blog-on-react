@@ -4,8 +4,6 @@ import BlogItem from './../ui/BlogItem';
 
 import _ from 'lodash';
 
-import Api from '../../helpers/Api';
-
 class Post extends React.Component {
   constructor(props) {
     super(props);
@@ -23,9 +21,7 @@ class Post extends React.Component {
       <div>
         {
           React.createElement(BlogItem,
-            _.assign({}, post,
-              { likeAdd: this.likeAdd }
-            ))
+            _.assign({}, post))
         }
       </div>
     );

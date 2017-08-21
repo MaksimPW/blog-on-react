@@ -33,15 +33,15 @@ function historyCb(location) {
 
     return match;
   });
-
+  console.log('historyCb prepareData');
   prepareData(store, routeState);
 }
 
 class App extends React.Component {
-componentWillMount() {
-  history.listen(historyCb);
-  historyCb(window.location);
-}
+  componentWillMount() {
+    history.listen(historyCb);
+    historyCb(window.location);
+  }
 
   render() {
     return(
