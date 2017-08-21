@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import BlogPage from './../components/containers/BlogPage';
-import { fetchPosts, fetchLikePosts } from './../actions/Posts';
+import { fetchLikePosts } from './../actions/Posts';
 
 const stateToProps = (state) => ({
   posts: state.posts.entries,

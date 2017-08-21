@@ -6,7 +6,7 @@ const PostsRoute = {
   path: '/',
   component: PostsContainer,
   prepareData: (store) => {
-    store.dispatch(fetchPosts())
+    store.dispatch(fetchPosts());
   }
 };
 

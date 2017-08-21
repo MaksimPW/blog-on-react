@@ -5,9 +5,6 @@ import Chart from '../ui/Chart';
 import TextBox from '../ui/TextBox';
 import Like from '../ui/Like';
 
-import request from 'superagent';
-import Api from '../../helpers/Api';
-
 export default class BlogPage extends React.Component {
   constructor(props) {
     super(props);
@@ -15,7 +12,7 @@ export default class BlogPage extends React.Component {
 
   render() {
     const { isFetching } = this.props;
-    return(
+    return (
       !isFetching && this.renderPosts()
     );
   }
@@ -37,4 +34,6 @@ export default class BlogPage extends React.Component {
 
 BlogPage.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object),
+  likeAdd: PropTypes.func.isRequired,
+  isFetching: PropTypes.bool
 };

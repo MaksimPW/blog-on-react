@@ -4,6 +4,8 @@ import Api from './../helpers/Api';
 import * as types from './../constants/actionTypes/PostsActionTypes';
 import * as likeTypes from './../constants/actionTypes/LikeActionTypes';
 
+import _ from 'lodash';
+
 const requestPosts = () => ({
   type: types.FETCH_POSTS_REQUEST
 });
@@ -49,7 +51,7 @@ export function fetchLikePosts(id, posts) {
     return request
       .patch(Api.addLike(id))
       .end((err, res) => {
-        const entries = _.cloneDeep(posts)
+        const entries = _.cloneDeep(posts);
         const index = _.findIndex(posts, post => post.id == id);
 
         entries[index] = res.body;

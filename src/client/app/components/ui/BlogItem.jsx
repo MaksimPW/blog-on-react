@@ -29,6 +29,7 @@ BlogItem.propTypes = {
   details: PropTypes.object,
   title: PropTypes.string,
   likes: PropTypes.number,
+  likeAdd: PropTypes.func.isRequired
 };
 
 export default BlogItem;

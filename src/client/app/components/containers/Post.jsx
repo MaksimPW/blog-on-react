@@ -30,17 +30,18 @@ class Post extends React.Component {
         }
       </div>
     );
-  };
+  }
 }
 
 Post.propTypes = {
   post: PropTypes.object,
   isFetching: PropTypes.bool,
-  match: PropTypes.object
+  match: PropTypes.object,
+  likeAdd: PropTypes.func.isRequired
 };
 
 Post.defaultProps = {
   post: {}
-}
+};
 
 export default Post;

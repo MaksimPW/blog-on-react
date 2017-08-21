@@ -43,7 +43,7 @@ class App extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <Provider store={store}>
         <Router history={history}>
           <MainLayout>
@@ -53,7 +53,7 @@ class App extends React.Component {
               ))}
             </Switch>
           </MainLayout>
-       </Router>
+        </Router>
       </Provider>
     );
   }

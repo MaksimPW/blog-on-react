@@ -23,7 +23,7 @@ class Like extends React.Component {
         </button>
       </div>
     );
-  };
+  }
 }
 
 Like.defaultProps = {
@@ -32,7 +32,7 @@ Like.defaultProps = {
 
 Like.propTypes = {
   count: PropTypes.number,
-  fetchLikePost: PropTypes.func.isRequired,
+  likeAdd: PropTypes.func.isRequired,
   postId: PropTypes.number
 };
 
