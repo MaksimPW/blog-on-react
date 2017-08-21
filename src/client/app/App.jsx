@@ -12,7 +12,7 @@ import prepareData from './helpers/prepareData';
 
 import DevTools from './containers/DevTools';
 
-import { BrowserRouter, matchPath, Switch } from 'react-router-dom';
+import { Router, matchPath, Switch } from 'react-router-dom';
 import createRoutes from './routes/index';
 import RouteWithSubRoutes from './helpers/routes/RouteWithSubRoutes';
 
@@ -22,7 +22,6 @@ import { assign } from 'lodash/object';
 const routes = createRoutes();
 function historyCb(location) {
   const routeState = { location, params: {}, routes: [], query: {}};
-
   routes.some(route => {
     const match = matchPath(location.pathname, route);
 
@@ -39,15 +38,15 @@ function historyCb(location) {
 }
 
 class App extends React.Component {
-  componentWillMount() {
-    history.listen(historyCb);
-    historyCb(window.location);
-  }
+componentWillMount() {
+  history.listen(historyCb);
+  historyCb(window.location);
+}
 
   render() {
     return(
       <Provider store={store}>
-        <BrowserRouter>
+        <Router history={history}>
           <MainLayout>
             <Switch>
               {routes.map((route, i) => (
@@ -55,7 +54,7 @@ class App extends React.Component {
               ))}
             </Switch>
           </MainLayout>
-       </BrowserRouter>
+       </Router>
       </Provider>
     );
   }
