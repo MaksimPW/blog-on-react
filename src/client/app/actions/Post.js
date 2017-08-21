@@ -2,6 +2,7 @@ import request from 'superagent';
 
 import Api from './../helpers/Api';
 import * as types from './../constants/actionTypes/PostActionTypes';
+import * as likeTypes from './../constants/actionTypes/LikeActionTypes';
 
 const requestPost = (id) => ({
   type: types.FETCH_POST_REQUEST,
@@ -17,6 +18,25 @@ const receivePost = (res) => ({
   res
 });
 
+const requestLikePost = (id) => ({
+  type: likeTypes.FETCH_LIKE_POST_REQUEST,
+  id
+});
+
+const errorLikePost = () => ({
+  type: likeTypes.FETCH_LIKE_POST_ERROR
+});
+
+const receiveLikePost = (res) => ({
+  type: likeTypes.FETCH_LIKE_POST_SUCCESS,
+  res
+});
+
+const receiveLikePosts = (res) => ({
+  type: likeTypes.FETCH_LIKE_POSTS_SUCCESS,
+  res
+});
+
 export function fetchPost(id) {
   return (dispatch) => {
     dispatch(requestPost(id));
@@ -25,6 +45,18 @@ export function fetchPost(id) {
       .get(Api.show(id))
       .end((err, res) => {
         err ? dispatch(errorPost()) : dispatch(receivePost(res.body));
+      });
+  };
+}
+
+export function fetchLikePost(id) {
+  return (dispatch) => {
+    dispatch(requestLikePost(id));
+
+    return request
+      .patch(Api.addLike(id))
+      .end((err, res) => {
+        err ? dispatch(errorLikePost()) : dispatch(receiveLikePost(res.body));
       });
   };
 }

@@ -15,7 +15,6 @@ export default class BlogPage extends React.Component {
 
   render() {
     const { isFetching } = this.props;
-
     return(
       !isFetching && this.renderPosts()
     );

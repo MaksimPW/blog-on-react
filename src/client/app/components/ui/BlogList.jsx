@@ -13,7 +13,7 @@ const BlogList = ({ posts, likeAdd }) => (
         (post) => (
           React.createElement(BlogItem,
             _.assign({}, post,
-              { key: post.id, likeAdd: () => likeAdd(post.id) }))
+              { key: post.id }))
         )
       )
     }
@@ -23,7 +23,6 @@ const BlogList = ({ posts, likeAdd }) => (
 
 BlogList.propTypes = {
   posts:  PropTypes.arrayOf(PropTypes.object),
-  likeAdd: PropTypes.func.isRequired
 };
 
 export default BlogList;

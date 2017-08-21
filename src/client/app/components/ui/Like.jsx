@@ -4,12 +4,10 @@ import PropTypes from 'prop-types';
 class Like extends React.Component {
   constructor(props) {
     super(props);
-    // count, likeAdd, postId
   }
 
   render() {
     const { count, postId } = this.props;
-    console.log(this.props);
     return (
       this.renderLike(count, postId)
     );

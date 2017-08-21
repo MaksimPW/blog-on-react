@@ -33,7 +33,6 @@ function historyCb(location) {
 
     return match;
   });
-  console.log('historyCb prepareData');
   prepareData(store, routeState);
 }
 
