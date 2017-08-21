@@ -32,11 +32,6 @@ const receiveLikePost = (res) => ({
   res
 });
 
-const receiveLikePosts = (res) => ({
-  type: likeTypes.FETCH_LIKE_POSTS_SUCCESS,
-  res
-});
-
 export function fetchPost(id) {
   return (dispatch) => {
     dispatch(requestPost(id));

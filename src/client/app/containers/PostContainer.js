@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Post from './../components/containers/Post';
-import { fetchPost } from './../actions/Post';
+import { fetchPost, fetchLikePost } from './../actions/Post';
 
 const stateToProps = (state) => ({
   post: state.post.entry,
@@ -9,4 +9,10 @@ const stateToProps = (state) => ({
   error: state.post.error
 });
 
-export default connect(stateToProps)(Post);
+const actionsToProps = (dispatch) => ({
+  likeAdd(postId) {
+    dispatch(fetchLikePost(postId));
+  }
+});
+
+export default connect(stateToProps, actionsToProps)(Post);

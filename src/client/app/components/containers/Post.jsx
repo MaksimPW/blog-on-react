@@ -10,18 +10,23 @@ class Post extends React.Component {
   }
 
   render() {
-    const { post, isFetching } = this.props;
+    const { post, isFetching, likeAdd } = this.props;
     return (
-      !isFetching && post && this.renderPost(post)
+      !isFetching && post && this.renderPost(post, likeAdd)
     );
   }
 
-  renderPost(post) {
+  renderPost(post, likeAdd) {
     return (
       <div>
         {
           React.createElement(BlogItem,
-            _.assign({}, post))
+            _.assign({}, post,
+              {
+                likeAdd: () => likeAdd(post.id)
+              }
+            )
+          )
         }
       </div>
     );

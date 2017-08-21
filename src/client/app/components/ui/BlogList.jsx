@@ -13,7 +13,12 @@ const BlogList = ({ posts, likeAdd }) => (
         (post) => (
           React.createElement(BlogItem,
             _.assign({}, post,
-              { key: post.id }))
+              {
+                key: post.id,
+                likeAdd: () => likeAdd(post.id, posts)
+              }
+            )
+          )
         )
       )
     }

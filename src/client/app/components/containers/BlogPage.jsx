@@ -21,11 +21,11 @@ export default class BlogPage extends React.Component {
   }
 
   renderPosts() {
-    const { posts } = this.props;
+    const { posts, likeAdd } = this.props;
 
     return (
       <div>
-        <BlogList posts={posts} />
+        <BlogList posts={posts} likeAdd={likeAdd}/>
         <Chart columns={posts.map((post) => [
           post.title || TextBox.defaultProps.children,
           post.likes || Like.defaultProps.count ])
