@@ -1,9 +1,7 @@
 import React, { PropTypes } from 'react';
 
 import BlogList from '../ui/BlogList';
-import Chart from '../ui/Chart';
-import TextBox from '../ui/TextBox';
-import Like from '../ui/Like';
+import ChartContainer from './../../containers/ChartContainer';
 
 export default class BlogPage extends React.Component {
   constructor(props) {
@@ -23,10 +21,7 @@ export default class BlogPage extends React.Component {
     return (
       <div>
         <BlogList posts={posts} likeAdd={likeAdd}/>
-        <Chart columns={posts.map((post) => [
-          post.title || TextBox.defaultProps.children,
-          post.likes || Like.defaultProps.count ])
-        } />
+        <ChartContainer />
       </div>
     );
   }
