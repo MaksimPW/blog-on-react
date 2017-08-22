@@ -19,11 +19,6 @@ const errorPosts = () => ({
   type: types.FETCH_POSTS_ERROR
 });
 
-const requestLikePosts = (id) => ({
-  type: likeTypes.FETCH_LIKE_POSTS_REQUEST,
-  id
-});
-
 const errorLikePosts = () => ({
   type: likeTypes.FETCH_LIKE_POSTS_ERROR
 });
@@ -47,15 +42,13 @@ export function fetchPosts() {
 
 export function fetchLikePosts(id, posts) {
   return (dispatch) => {
-    dispatch(requestLikePosts(id));
     return request
       .patch(Api.addLike(id))
       .end((err, res) => {
         const entries = _.cloneDeep(posts);
         const index = _.findIndex(posts, post => post.id == id);
 
-        entries[index] = res.body;
-
+        entries[index].likes = res.body.likes;
         err ? dispatch(errorLikePosts()) : dispatch(receiveLikePosts(entries));
       });
   };

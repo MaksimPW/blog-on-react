@@ -18,11 +18,6 @@ const receivePost = (res) => ({
   res
 });
 
-const requestLikePost = (id) => ({
-  type: likeTypes.FETCH_LIKE_POST_REQUEST,
-  id
-});
-
 const errorLikePost = () => ({
   type: likeTypes.FETCH_LIKE_POST_ERROR
 });
@@ -46,8 +41,6 @@ export function fetchPost(id) {
 
 export function fetchLikePost(id) {
   return (dispatch) => {
-    dispatch(requestLikePost(id));
-
     return request
       .patch(Api.addLike(id))
       .end((err, res) => {
