@@ -1,3 +1,5 @@
+/* eslint-disable import/max-dependencies */
+
 import React from 'react';
 import {render} from 'react-dom';
 

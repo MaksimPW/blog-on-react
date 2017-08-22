@@ -41,15 +41,13 @@ export function fetchPosts() {
 }
 
 export function fetchLikePosts(id, posts) {
-  return (dispatch) => {
-    return request
-      .patch(Api.addLike(id))
-      .end((err, res) => {
-        const entries = _.cloneDeep(posts);
-        const index = _.findIndex(posts, post => post.id == id);
+  return (dispatch) => request
+    .patch(Api.addLike(id))
+    .end((err, res) => {
+      const entries = _.cloneDeep(posts);
+      const index = _.findIndex(posts, post => post.id == id);
 
-        entries[index].likes = res.body.likes;
-        err ? dispatch(errorLikePosts()) : dispatch(receiveLikePosts(entries));
-      });
-  };
+      entries[index].likes = res.body.likes;
+      err ? dispatch(errorLikePosts()) : dispatch(receiveLikePosts(entries));
+    });
 }

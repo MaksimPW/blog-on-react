@@ -40,11 +40,9 @@ export function fetchPost(id) {
 }
 
 export function fetchLikePost(id) {
-  return (dispatch) => {
-    return request
-      .patch(Api.addLike(id))
-      .end((err, res) => {
-        err ? dispatch(errorLikePost()) : dispatch(receiveLikePost(res.body));
-      });
-  };
+  return (dispatch) => request
+    .patch(Api.addLike(id))
+    .end((err, res) => {
+      err ? dispatch(errorLikePost()) : dispatch(receiveLikePost(res.body));
+    });
 }
