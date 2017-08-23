@@ -7,6 +7,12 @@ class Like extends React.Component {
   }
 
   render() {
+    return (
+      this.renderLike()
+    );
+  }
+
+  renderLike() {
     const { likeAdd, count, postId, postType, posts } = this.props;
     return (
       <div>
