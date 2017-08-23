@@ -21,9 +21,8 @@ export default function(state = initialState, action) {
     case likeTypes.FETCH_LIKE_POST_ERROR:
       return assign({}, initialState, { error: true });
     case likeTypes.FETCH_LIKE_POST_SUCCESS:
-      let checkType = action.res instanceof Array;
+      const checkType = action.res instanceof Array;
       if (checkType == false) {
-        console.log(action.res);
         return assign({}, initialState, { entry: action.res });
       }
 

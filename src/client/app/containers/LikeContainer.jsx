@@ -13,12 +13,13 @@ const stateToProps = (state, props) => ({
 });
 
 const countLikesProps = (state, props) => {
-  const entries = _.cloneDeep(state.posts.entries);
-  const index = _.findIndex(entries, post => post.id == props.postId);
-  if (entries[index] == null) {
-    return state.post.entry.likes;
-  } else {
-    return entries[index].likes;
+  switch (props.postType) {
+    case 'Post':
+      return state.post.entry.likes;
+    case 'Posts':
+      const entries = _.cloneDeep(state.posts.entries);
+      const index = _.findIndex(entries, post => post.id == props.postId);
+      return entries[index].likes;
   }
 };
 
