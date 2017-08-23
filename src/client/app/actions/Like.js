@@ -9,10 +9,6 @@ export const receiveLikePost = (res) => ({
   res
 });
 
-export const errorLikePosts = () => ({
-  type: likeTypes.FETCH_LIKE_POSTS_ERROR
-});
-
 export const receiveLikePosts = (res) => ({
   type: likeTypes.FETCH_LIKE_POSTS_SUCCESS,
   res

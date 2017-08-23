@@ -18,7 +18,7 @@ export default function(state = initialState, action) {
     case types.FETCH_POSTS_SUCCESS:
       return assign({}, initialState, { entries: action.res });
 
-    case likeTypes.FETCH_LIKE_POSTS_ERROR:
+    case likeTypes.FETCH_LIKE_POST_ERROR:
       return assign({}, state, { error: true });
     case likeTypes.FETCH_LIKE_POSTS_SUCCESS:
       return assign({}, initialState, { entries: action.res });
