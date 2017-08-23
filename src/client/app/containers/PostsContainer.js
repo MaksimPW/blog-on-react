@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
 import BlogPage from './../components/containers/BlogPage';
-import { fetchLikePosts } from './../actions/Posts';
 
 const stateToProps = (state) => ({
   posts: state.posts.entries,
@@ -9,10 +8,4 @@ const stateToProps = (state) => ({
   error: state.posts.error
 });
 
-const actionsToProps = (dispatch) => ({
-  likeAdd(postId, posts) {
-    dispatch(fetchLikePosts(postId, posts));
-  }
-});
-
-export default connect(stateToProps, actionsToProps)(BlogPage);
+export default connect(stateToProps)(BlogPage);

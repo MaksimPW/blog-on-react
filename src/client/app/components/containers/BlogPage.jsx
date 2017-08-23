@@ -16,11 +16,11 @@ export default class BlogPage extends React.Component {
   }
 
   renderPosts() {
-    const { posts, likeAdd } = this.props;
+    const { posts } = this.props;
 
     return (
       <div>
-        <BlogList posts={posts} likeAdd={likeAdd}/>
+        <BlogList posts={posts} />
         <ChartContainer />
       </div>
     );
@@ -29,6 +29,5 @@ export default class BlogPage extends React.Component {
 
 BlogPage.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object),
-  likeAdd: PropTypes.func.isRequired,
   isFetching: PropTypes.bool
 };

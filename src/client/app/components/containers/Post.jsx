@@ -10,20 +10,20 @@ class Post extends React.Component {
   }
 
   render() {
-    const { post, isFetching, likeAdd } = this.props;
+    const { post, isFetching } = this.props;
     return (
-      !isFetching && post && this.renderPost(post, likeAdd)
+      !isFetching && post && this.renderPost(post)
     );
   }
 
-  renderPost(post, likeAdd) {
+  renderPost(post) {
     return (
       <div>
         {
           React.createElement(BlogItem,
             _.assign({}, post,
               {
-                likeAdd: () => likeAdd(post.id)
+                postType: 'Post'
               }
             )
           )
@@ -37,7 +37,6 @@ Post.propTypes = {
   post: PropTypes.object,
   isFetching: PropTypes.bool,
   match: PropTypes.object,
-  likeAdd: PropTypes.func.isRequired
 };
 
 Post.defaultProps = {
