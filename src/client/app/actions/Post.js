@@ -2,7 +2,8 @@ import request from 'superagent';
 
 import Api from './../helpers/Api';
 import * as types from './../constants/actionTypes/PostActionTypes';
-import * as likeTypes from './../constants/actionTypes/LikeActionTypes';
+
+import { errorLikePost, receiveLikePost } from './Like';
 
 const requestPost = (id) => ({
   type: types.FETCH_POST_REQUEST,
@@ -15,15 +16,6 @@ const errorPost = () => ({
 
 const receivePost = (res) => ({
   type: types.FETCH_POST_SUCCESS,
-  res
-});
-
-const errorLikePost = () => ({
-  type: likeTypes.FETCH_LIKE_POST_ERROR
-});
-
-const receiveLikePost = (res) => ({
-  type: likeTypes.FETCH_LIKE_POST_SUCCESS,
   res
 });
 

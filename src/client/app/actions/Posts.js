@@ -2,7 +2,8 @@ import request from 'superagent';
 
 import Api from './../helpers/Api';
 import * as types from './../constants/actionTypes/PostsActionTypes';
-import * as likeTypes from './../constants/actionTypes/LikeActionTypes';
+
+import { errorLikePost, receiveLikePost } from './Like';
 
 import _ from 'lodash';
 
@@ -17,15 +18,6 @@ const receivePosts = (res) => ({
 
 const errorPosts = () => ({
   type: types.FETCH_POSTS_ERROR
-});
-
-const errorLikePosts = () => ({
-  type: likeTypes.FETCH_LIKE_POSTS_ERROR
-});
-
-const receiveLikePosts = (res) => ({
-  type: likeTypes.FETCH_LIKE_POSTS_SUCCESS,
-  res
 });
 
 export function fetchPosts() {
@@ -48,6 +40,6 @@ export function fetchLikePosts(id, posts) {
       const index = _.findIndex(posts, post => post.id == id);
 
       entries[index].likes = res.body.likes;
-      err ? dispatch(errorLikePosts()) : dispatch(receiveLikePosts(entries));
+      err ? dispatch(errorLikePost()) : dispatch(receiveLikePost(entries));
     });
 }
