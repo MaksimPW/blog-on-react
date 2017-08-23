@@ -20,8 +20,11 @@ export default function(state = initialState, action) {
 
     case likeTypes.FETCH_LIKE_POST_ERROR:
       return assign({}, state, { error: true });
-    case likeTypes.FETCH_LIKE_POSTS_SUCCESS:
-      return assign({}, initialState, { entries: action.res });
+    case likeTypes.FETCH_LIKE_POST_SUCCESS:
+      if (action.res instanceof Array) {
+        console.log(action.res);
+        return assign({}, initialState, { entries: action.res });
+      }
 
     default:
       return state;

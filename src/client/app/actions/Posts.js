@@ -3,7 +3,7 @@ import request from 'superagent';
 import Api from './../helpers/Api';
 import * as types from './../constants/actionTypes/PostsActionTypes';
 
-import { errorLikePost, receiveLikePosts } from './Like';
+import { errorLikePost, receiveLikePost } from './Like';
 
 import _ from 'lodash';
 
@@ -40,6 +40,6 @@ export function fetchLikePosts(id, posts) {
       const index = _.findIndex(posts, post => post.id == id);
 
       entries[index].likes = res.body.likes;
-      err ? dispatch(errorLikePost()) : dispatch(receiveLikePosts(entries));
+      err ? dispatch(errorLikePost()) : dispatch(receiveLikePost(entries));
     });
 }
