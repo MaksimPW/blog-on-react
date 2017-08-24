@@ -24,6 +24,7 @@ export default function(state = initialState, action) {
       if (action.res instanceof Array) {
         return assign({}, initialState, { entries: action.res });
       }
+      return state;
 
     default:
       return state;

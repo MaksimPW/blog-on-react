@@ -21,10 +21,10 @@ export default function(state = initialState, action) {
     case likeTypes.FETCH_LIKE_POST_ERROR:
       return assign({}, initialState, { error: true });
     case likeTypes.FETCH_LIKE_POST_SUCCESS:
-      const checkType = action.res instanceof Array;
-      if (checkType == false) {
+      if ((action.res instanceof Array) == false) {
         return assign({}, initialState, { entry: action.res });
       }
+      return state;
 
     default:
       return state;
