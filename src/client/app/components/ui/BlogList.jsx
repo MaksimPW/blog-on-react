@@ -14,8 +14,7 @@ const BlogList = ({ posts }) => (
           React.createElement(BlogItem,
             _.assign({}, post,
               {
-                key: post.id,
-                postType: 'Posts'
+                key: post.id
               }
             )
           )

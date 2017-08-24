@@ -10,7 +10,7 @@ import LikeContainer from './../../containers/LikeContainer';
 
 import { postsPath } from './../../helpers/routes/paths';
 
-const BlogItem = ({ id, image, details, title, postType }) => (
+const BlogItem = ({ id, image, details, title }) => (
   <div className="blog_item">
     <Link to={postsPath(id)}>
       <Image {...image} />
@@ -18,7 +18,7 @@ const BlogItem = ({ id, image, details, title, postType }) => (
     <div className="container">
       <DetailsBox {...details} />
       <TextBox>{title}</TextBox>
-      <LikeContainer postId={id} postType={postType} />
+      <LikeContainer postId={id} />
     </div>
   </div>
 );
@@ -27,8 +27,7 @@ BlogItem.propTypes = {
   id: PropTypes.number,
   image: PropTypes.object,
   details: PropTypes.object,
-  title: PropTypes.string,
-  postType: PropTypes.string
+  title: PropTypes.string
 };
 
 export default BlogItem;

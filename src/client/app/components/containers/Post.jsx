@@ -21,11 +21,7 @@ class Post extends React.Component {
       <div>
         {
           React.createElement(BlogItem,
-            _.assign({}, post,
-              {
-                postType: 'Post'
-              }
-            )
+            _.assign({}, post)
           )
         }
       </div>

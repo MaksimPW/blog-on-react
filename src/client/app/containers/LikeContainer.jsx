@@ -6,18 +6,14 @@ import _ from 'lodash';
 import { fetchLikePost } from './../actions/Like';
 
 const countLikesProps = (state, props) => {
-  switch (props.postType) {
-    case 'Post':
-      return state.post.entry.likes;
-    case 'Posts':
-      return countLikesEntries(state, props);
-  }
-};
-
-const countLikesEntries = (state, props) => {
   const entries = _.cloneDeep(state.posts.entries);
-  const index = _.findIndex(entries, post => post.id == props.postId);
-  return entries[index].likes;
+
+  if (entries == null || entries.length == 0) {
+    return state.post.entry.likes;
+  } else {
+    const index = _.findIndex(entries, post => post.id == props.postId);
+    return entries[index].likes;
+  }
 };
 
 const stateToProps = (state, props) => ({
