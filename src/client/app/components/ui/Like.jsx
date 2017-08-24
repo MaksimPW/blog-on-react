@@ -13,12 +13,12 @@ class Like extends React.Component {
   }
 
   renderLike() {
-    const { likeAdd, count, postId, postType, posts } = this.props;
+    const { likeAdd, count, postId } = this.props;
     return (
       <div>
         <button
           className='like'
-          onClick={ () => likeAdd(postId, postType, posts) }>
+          onClick={ () => likeAdd(postId) }>
             Like {count}
         </button>
       </div>
@@ -34,8 +34,6 @@ Like.propTypes = {
   count: PropTypes.number,
   likeAdd: PropTypes.func.isRequired,
   postId: PropTypes.number,
-  postType: PropTypes.string,
-  posts: PropTypes.array
 };
 
 export default Like;

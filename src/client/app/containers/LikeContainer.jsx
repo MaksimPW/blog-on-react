@@ -3,8 +3,7 @@ import Like from './../components/ui/Like';
 
 import _ from 'lodash';
 
-import { fetchLikePost } from './../actions/Post';
-import { fetchLikePosts } from './../actions/Posts';
+import { fetchLikePost } from './../actions/Like';
 
 const countLikesProps = (state, props) => {
   switch (props.postType) {
@@ -28,13 +27,8 @@ const stateToProps = (state, props) => ({
 });
 
 const actionsToProps = (dispatch) => ({
-  likeAdd(postId, postType, posts) {
-    switch (postType) {
-      case 'Post':
-        return dispatch(fetchLikePost(postId));
-      case 'Posts':
-        return dispatch(fetchLikePosts(postId, posts));
-    }
+  likeAdd(postId) {
+    return dispatch(fetchLikePost(postId));
   }
 });
 

@@ -3,10 +3,6 @@ import request from 'superagent';
 import Api from './../helpers/Api';
 import * as types from './../constants/actionTypes/PostsActionTypes';
 
-import { errorLikePost, receiveLikePost } from './Like';
-
-import _ from 'lodash';
-
 const requestPosts = () => ({
   type: types.FETCH_POSTS_REQUEST
 });
@@ -30,16 +26,4 @@ export function fetchPosts() {
         err ? dispatch(errorPosts()) : dispatch(receivePosts(res.body));
       });
   };
-}
-
-export function fetchLikePosts(id, posts) {
-  return (dispatch) => request
-    .patch(Api.addLike(id))
-    .end((err, res) => {
-      const entries = _.cloneDeep(posts);
-      const index = _.findIndex(posts, post => post.id == id);
-
-      entries[index].likes = res.body.likes;
-      err ? dispatch(errorLikePost()) : dispatch(receiveLikePost(entries));
-    });
 }

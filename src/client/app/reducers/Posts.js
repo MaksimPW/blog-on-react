@@ -1,4 +1,4 @@
-import { assign } from 'lodash';
+import _ from 'lodash';
 
 import * as types from './../constants/actionTypes/PostsActionTypes';
 import * as likeTypes from './../constants/actionTypes/LikeActionTypes';
@@ -12,21 +12,28 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case types.FETCH_POSTS_REQUEST:
-      return assign({}, initialState, { isFetching: true });
+      return _.assign({}, initialState, { isFetching: true });
     case types.FETCH_POSTS_ERROR:
-      return assign({}, initialState, { error: true });
+      return _.assign({}, initialState, { error: true });
     case types.FETCH_POSTS_SUCCESS:
-      return assign({}, initialState, { entries: action.res });
+      return _.assign({}, initialState, { entries: action.res });
 
     case likeTypes.FETCH_LIKE_POST_ERROR:
-      return assign({}, state, { error: true });
+      return _.assign({}, state, { error: true });
     case likeTypes.FETCH_LIKE_POST_SUCCESS:
-      if (action.res instanceof Array) {
-        return assign({}, initialState, { entries: action.res });
-      }
-      return state;
+      return setStateLike(state, action);
 
     default:
       return state;
   }
 }
+
+const setStateLike = (state, action) => {
+  const entriesUpdated = _.cloneDeep(state.entries);
+  const index =
+    _.findIndex(entriesUpdated, post => post.id == action.res.id);
+
+  entriesUpdated[index].likes = action.res.likes;
+
+  return _.assign({}, initialState, { entries: entriesUpdated });
+};
