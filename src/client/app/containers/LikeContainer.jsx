@@ -32,4 +32,12 @@ const actionsToProps = (dispatch) => ({
   }
 });
 
-export default connect(stateToProps, actionsToProps)(Like);
+const mergeProps = (stateToProps, actionsToProps, props) => (
+  _.assign(
+    {},
+    stateToProps,
+    {likeAdd: () => actionsToProps.likeAdd(props.postId)}
+  )
+);
+
+export default connect(stateToProps, actionsToProps, mergeProps)(Like);

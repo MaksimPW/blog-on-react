@@ -13,12 +13,12 @@ class Like extends React.Component {
   }
 
   renderLike() {
-    const { likeAdd, count, postId } = this.props;
+    const { likeAdd, count } = this.props;
     return (
       <div>
         <button
           className='like'
-          onClick={ () => likeAdd(postId) }>
+          onClick={ () => likeAdd() }>
             Like {count}
         </button>
       </div>
