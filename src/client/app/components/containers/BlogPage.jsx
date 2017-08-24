@@ -9,15 +9,13 @@ export default class BlogPage extends React.Component {
   }
 
   render() {
-    const { isFetching } = this.props;
+    const { isFetching, posts } = this.props;
     return (
-      !isFetching && this.renderPosts()
+      !isFetching && this.renderPosts(posts)
     );
   }
 
-  renderPosts() {
-    const { posts } = this.props;
-
+  renderPosts(posts) {
     return (
       <div>
         <BlogList posts={posts} />

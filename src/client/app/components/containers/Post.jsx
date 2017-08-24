@@ -32,7 +32,6 @@ class Post extends React.Component {
 Post.propTypes = {
   post: PropTypes.object,
   isFetching: PropTypes.bool,
-  match: PropTypes.object,
 };
 
 Post.defaultProps = {
