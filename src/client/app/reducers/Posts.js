@@ -30,10 +30,14 @@ export default function(state = initialState, action) {
 
 const setStateLike = (state, action) => {
   const entriesUpdated = _.cloneDeep(state.entries);
-  const index =
-    _.findIndex(entriesUpdated, post => post.id == action.res.id);
 
-  entriesUpdated[index].likes = action.res.likes;
+  if (entriesUpdated.length == 0) {
+    return state;
+  } else {
+    const index =
+      _.findIndex(entriesUpdated, post => post.id == action.res.id);
 
-  return _.assign({}, initialState, { entries: entriesUpdated });
+    entriesUpdated[index].likes = action.res.likes;
+    return _.assign({}, initialState, { entries: entriesUpdated });
+  }
 };
