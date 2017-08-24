@@ -3,7 +3,8 @@ const Api = ({
   index: 'http://localhost:3000/posts',
   show: (id) => `http://localhost:3000/posts/${id}`,
   addLike: (id) => `http://localhost:3000/posts/${id}/add_like`,
-  defaultImage: 'http://localhost:3000/images/original/missing.png'
+  defaultImage: 'http://localhost:3000/images/original/missing.png',
+  formatDate: 'DD MMM YYYY'
 });
 
 export default Api;

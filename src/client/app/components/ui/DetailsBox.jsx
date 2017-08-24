@@ -2,11 +2,13 @@ import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 
+import Api from './../../helpers/Api';
+
 const DetailsBox = (props) => (
   <div className="details_box">
-    <b><p>Author: {props.author}</p></b>
-    <p>createdAt: {props.createdAt}</p>
-    <p>updatedAt: {props.updatedAt}</p>
+    <b><p>Author: { props.author }</p></b>
+    <p>createdAt: { moment(props.createdAt, Api.formatDate).fromNow() }</p>
+    <p>updatedAt: { moment(props.updatedAt, Api.formatDate).fromNow() }</p>
   </div>
 );
 
