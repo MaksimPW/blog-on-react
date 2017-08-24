@@ -1,30 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Like extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      this.renderLike()
-    );
-  }
-
-  renderLike() {
-    const { likeAdd, count } = this.props;
-    return (
-      <div>
-        <button
-          className='like'
-          onClick={ () => likeAdd() }>
-            Like {count}
-        </button>
-      </div>
-    );
-  }
-}
+const Like = ({ likeAdd, count }) => (
+  <div>
+    <button
+      className='like'
+      onClick={ () => likeAdd() }>
+        Like {count}
+    </button>
+  </div>
+);
 
 Like.defaultProps = {
   count: 0
