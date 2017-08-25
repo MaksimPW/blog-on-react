@@ -1,51 +1,25 @@
 import React, { PropTypes } from 'react';
 
 import BlogList from '../ui/BlogList';
-import Chart from '../ui/Chart';
-import TextBox from '../ui/TextBox';
-import Like from '../ui/Like';
-
-import request from 'superagent';
-import Api from '../../helpers/Api';
+import ChartContainer from './../../containers/ChartContainer';
 
 export default class BlogPage extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = { posts: [] };
-    this.likeAdd = this.likeAdd.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchPosts();
-  }
-
-  fetchPosts() {
-    request.get(
-      Api.index,
-      {},
-      (err, res) => this.setState({ posts: res.body })
-    );
-  }
-
-  likeAdd(postId) {
-    request.patch(
-      Api.addLike(postId),
-      {},
-      () => this.fetchPosts()
-    );
   }
 
   render() {
-    const { posts } = this.state;
+    const { isFetching, posts } = this.props;
+    return (
+      !isFetching && this.renderPosts(posts)
+    );
+  }
 
+  renderPosts(posts) {
     return (
       <div>
-        <BlogList posts={posts} likeAdd={this.likeAdd} />
-        <Chart columns={posts.map((post) => [
-          post.title || TextBox.defaultProps.children,
-          post.likes || Like.defaultProps.count ])
-        } />
+        <BlogList posts={posts} />
+        <ChartContainer />
       </div>
     );
   }
@@ -53,4 +27,5 @@ export default class BlogPage extends React.Component {
 
 BlogPage.propTypes = {
   posts: PropTypes.arrayOf(PropTypes.object),
+  isFetching: PropTypes.bool
 };

@@ -4,11 +4,13 @@ import PropTypes from 'prop-types';
 import Image from './Image';
 import DetailsBox from './DetailsBox';
 import TextBox from './TextBox';
-import Like from './Like';
 import Link from './../elements/Link';
+
+import LikeContainer from './../../containers/LikeContainer';
+
 import { postsPath } from './../../helpers/routes/paths';
 
-const BlogItem = ({ id, image, details, title, likes, likeAdd }) => (
+const BlogItem = ({ id, image, details, title }) => (
   <div className="blog_item">
     <Link to={postsPath(id)}>
       <Image {...image} />
@@ -16,7 +18,7 @@ const BlogItem = ({ id, image, details, title, likes, likeAdd }) => (
     <div className="container">
       <DetailsBox {...details} />
       <TextBox>{title}</TextBox>
-      <Like count={likes} likeAdd={likeAdd} />
+      <LikeContainer postId={id} />
     </div>
   </div>
 );
@@ -25,9 +27,7 @@ BlogItem.propTypes = {
   id: PropTypes.number,
   image: PropTypes.object,
   details: PropTypes.object,
-  title: PropTypes.string,
-  likes: PropTypes.number,
-  likeAdd: PropTypes.func.isRequired
+  title: PropTypes.string
 };
 
 export default BlogItem;

@@ -7,7 +7,6 @@ const Image = (props) => (
   <img {...props} />
 );
 
-
 Image.defaultProps = {
   src: Api.defaultImage,
   alt: 'default alt',
