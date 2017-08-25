@@ -5,8 +5,8 @@ import { API_CALL } from './../middleware/API';
 export function fetchPosts() {
   return {
     [API_CALL]: {
-      endpoint: Api.index,
-      method: 'GET',
+      endpoint: Api.index.endpoint,
+      method: Api.index.method,
       query: {},
       types: [
         types.FETCH_POSTS_REQUEST,

@@ -5,8 +5,8 @@ import { API_CALL } from './../middleware/API';
 export function fetchLikePost(id) {
   return {
     [API_CALL]: {
-      endpoint: Api.addLike(id),
-      method: 'PATCH',
+      endpoint: Api.addLike.endpoint(id),
+      method: Api.addLike.method,
       query: {},
       types: [
         '',
