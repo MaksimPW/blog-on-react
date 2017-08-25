@@ -1,29 +1,18 @@
-import request from 'superagent';
-
-import Api from './../helpers/Api';
 import * as types from './../constants/actionTypes/PostsActionTypes';
-
-const requestPosts = () => ({
-  type: types.FETCH_POSTS_REQUEST
-});
-
-const receivePosts = (res) => ({
-  type: types.FETCH_POSTS_SUCCESS,
-  res
-});
-
-const errorPosts = () => ({
-  type: types.FETCH_POSTS_ERROR
-});
+import Api from './../helpers/Api';
+import { API_CALL } from './../middleware/API';
 
 export function fetchPosts() {
-  return (dispatch) => {
-    dispatch(requestPosts());
-
-    return request
-      .get(Api.index)
-      .end((err, res) => {
-        err ? dispatch(errorPosts()) : dispatch(receivePosts(res.body));
-      });
+  return {
+    [API_CALL]: {
+      endpoint: Api.index,
+      method: 'GET',
+      query: {},
+      types: [
+        types.FETCH_POSTS_REQUEST,
+        types.FETCH_POSTS_SUCCESS,
+        types.FETCH_POSTS_ERROR
+      ]
+    }
   };
 }

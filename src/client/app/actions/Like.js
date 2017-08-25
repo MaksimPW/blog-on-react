@@ -1,21 +1,18 @@
-import * as likeTypes from './../constants/actionTypes/LikeActionTypes';
-
+import * as types from './../constants/actionTypes/LikeActionTypes';
 import Api from './../helpers/Api';
-import request from 'superagent';
-
-export const errorLikePost = () => ({
-  type: likeTypes.FETCH_LIKE_POST_ERROR
-});
-
-export const receiveLikePost = (res) => ({
-  type: likeTypes.FETCH_LIKE_POST_SUCCESS,
-  res
-});
+import { API_CALL } from './../middleware/API';
 
 export function fetchLikePost(id) {
-  return (dispatch) => request
-    .patch(Api.addLike(id))
-    .end((err, res) => {
-      err ? dispatch(errorLikePost()) : dispatch(receiveLikePost(res.body));
-    });
+  return {
+    [API_CALL]: {
+      endpoint: Api.addLike(id),
+      method: 'PATCH',
+      query: {},
+      types: [
+        '',
+        types.FETCH_LIKE_POST_SUCCESS,
+        types.FETCH_LIKE_POST_ERROR
+      ]
+    }
+  };
 }
