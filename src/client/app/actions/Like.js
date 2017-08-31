@@ -9,7 +9,7 @@ export function fetchLikePost(id) {
       method: Api.addLike.method,
       query: {},
       types: [
-        null,
+        types.FETCH_LIKE_POST_REQUEST,
         types.FETCH_LIKE_POST_SUCCESS,
         types.FETCH_LIKE_POST_ERROR
       ]
