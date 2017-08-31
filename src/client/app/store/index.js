@@ -1,14 +1,14 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 
-import thunk from 'redux-thunk';
 import DevTools from './../containers/DevTools';
 
+import APIMiddleware from './../middleware/API';
 import reducers from './../reducers/index';
 
 const store = createStore(
   reducers,
   compose(
-    applyMiddleware(thunk),
+    applyMiddleware(APIMiddleware),
     DevTools.instrument()
   )
 );
