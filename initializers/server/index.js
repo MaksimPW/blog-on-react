@@ -42,19 +42,3 @@ app.get('*', require('./render').default);
 app.listen(port, function() {
   console.log(`Server listening at ${host}:${port}`);
 })
-
-//const server = new webpackDevServer(webpack(config), {
-//  hot: true,
-//  historyApiFallback: true,
-//  publicPath: config.output.publicPath,
-//  stats: {
-//    colors: true
-//  }
-//});
-
-//server.listen(port, host, (err) => {
-//  if (err)
-//    console.log(err);
-
-//  console.log(`Server listening at ${host}:${port}`);
-//});

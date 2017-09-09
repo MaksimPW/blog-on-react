@@ -39,33 +39,38 @@ export default (req, res) => {
   const location = url.parse(req.url);
   const routeState = historyCb(location);
 
-  Promise.all(
-    _.compact(prepareData(store, routeState))
-  ).then(() => {
-    const initialState = JSON.stringify(store.getState());
-    console.log(initialState, 'initialState in render.js');
-    const context = {};
 
-    const content = ReactDOMServer.renderToString(
-      <Provider store={store}>
-        <StaticRouter location={req.url} context={context}>
-          <MainLayout>
-            <Switch>
-              {routes.map((route, i) => (
-                <RouteWithSubRoutes key={i} {...route}/>
-              ))}
-            </Switch>
-          </MainLayout>
-        </StaticRouter>
-      </Provider>
-    );
+  if (routeState.routes.length == 0) {
+    res.status(404);
+    res.render('views/not_found');
+  } else {
+    Promise.all(
+      _.compact(prepareData(store, routeState))
+    ).then(() => {
+      const initialState = JSON.stringify(store.getState());
+      const context = {};
 
-    const head = Helmet.rewind();
+      const content = ReactDOMServer.renderToString(
+        <Provider store={store}>
+          <StaticRouter location={req.url} context={context}>
+            <MainLayout>
+              <Switch>
+                {routes.map((route, i) => (
+                  <RouteWithSubRoutes key={i} {...route}/>
+                ))}
+              </Switch>
+            </MainLayout>
+          </StaticRouter>
+        </Provider>
+      );
 
-    res.status(200);
-    res.render(
-      'index',
-      { initialState, content, head }
-    );
-  });
+      const head = Helmet.rewind();
+
+      res.status(200);
+      res.render(
+        'views/index',
+        { initialState, content, head }
+      );
+    });
+  }
 };
