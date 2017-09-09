@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Helmet from 'react-helmet';
 
 import BlogItem from './../ui/BlogItem';
 
@@ -24,6 +25,10 @@ class Post extends React.Component {
             _.assign({}, post)
           )
         }
+        <Helmet title={post.title} >
+          <meta name="keywords" content="пост блог" />
+          <meta name="description" content="Пост в проекте blog-on-react" />
+        </Helmet>
       </div>
     );
   }
