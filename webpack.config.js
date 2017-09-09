@@ -1,16 +1,15 @@
 /* eslint-disable */
 
-var webpack = require('webpack');
-var path = require('path');
+import path from 'path';
+import webpack from 'webpack';
 
-var BUILD_DIR = path.resolve(__dirname, 'src/client/public');
-var APP_DIR = path.resolve(__dirname, 'src/client/app');
+const BUILD_DIR = path.resolve(__dirname, 'src/client/public');
+const APP_DIR = path.resolve(__dirname, 'src/client/app');
 
 var config = {
   entry: [
     'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3030',
-    'webpack/hot/only-dev-server',
+    'webpack-hot-middleware/client',
     APP_DIR + '/index.jsx'
   ],
 
@@ -47,6 +46,11 @@ var config = {
   },
 
   plugins: [
+    new webpack.DefinePlugin({
+      __SERVER__: false,
+      __CLIENT__: true,
+      __DEVELOPMENT__: true
+    }),
     new webpack.HotModuleReplacementPlugin()
   ]
 };

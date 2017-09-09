@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import Helmet from 'react-helmet';
 
 import BlogList from '../ui/BlogList';
 import ChartContainer from './../../containers/ChartContainer';
@@ -20,6 +21,16 @@ export default class BlogPage extends React.Component {
       <div>
         <BlogList posts={posts} />
         <ChartContainer />
+        <Helmet title='Список постов' >
+          <meta
+            name="keywords"
+            content="главная страница блог"
+          />
+          <meta
+            name="description"
+            content="Главная страница в проекте blog-on-react"
+          />
+        </Helmet>
       </div>
     );
   }
