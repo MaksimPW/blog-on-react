@@ -15,7 +15,6 @@ import createRoutes from './../../src/client/app/routes/index';
 import RouteWithSubRoutes from './../../src/client/app/helpers/routes/RouteWithSubRoutes';
 import MainLayout from './../../src/client/app/components/layouts/MainLayout';
 
-const store = createStore();
 const routes = createRoutes();
 
 function historyCb(location) {
@@ -36,6 +35,7 @@ function historyCb(location) {
 }
 
 export default (req, res) => {
+  const store = createStore();
   const location = url.parse(req.url);
   const routeState = historyCb(location);
 
