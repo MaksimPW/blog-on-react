@@ -71,6 +71,9 @@ export default (req, res) => {
         'views/index',
         { initialState, content, head }
       );
+    }).catch(() => {
+      res.status(500);
+      res.render('views/internal_error');
     });
   }
 };
