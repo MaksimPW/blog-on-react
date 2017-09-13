@@ -18,6 +18,10 @@ const Logo = () => (
     <Link to='/'>
       Blog
     </Link>
+    <br/>
+    <Link to='/contacts'>
+      Contacts
+    </Link>
   </div>
 );
 
