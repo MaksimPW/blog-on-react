@@ -71,7 +71,7 @@ class Text extends React.Component {
 
     return (
       <div className={classNames('ui field', { error })}>
-        <label for={name}>{label}:</label>
+        <label htmlFor={name}>{label}:</label>
         <input
           type="text"
           className="ui input"
@@ -90,7 +90,7 @@ class TextArea extends React.Component {
 
     return (
       <div className="ui field">
-        <label for={name}>{label}:</label>
+        <label htmlFor={name}>{label}:</label>
         <textarea
           className="ui input"
           id={name}

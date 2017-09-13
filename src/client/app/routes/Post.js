@@ -6,6 +6,7 @@ import initialLoad from './../helpers/initialLoad';
 import PostContainer from './../containers/PostContainer';
 
 const PostRoute = {
+  exact: true,
   path: postsPath(),
   component: PostContainer,
   prepareData: (store, query, params) => {
