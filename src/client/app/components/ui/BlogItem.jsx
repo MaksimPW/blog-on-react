@@ -8,7 +8,7 @@ import Link from './../elements/Link';
 
 import LikeContainer from './../../containers/LikeContainer';
 
-import { postsPath } from './../../helpers/routes/paths';
+import { postsPath, editPostsPath } from './../../helpers/routes/paths';
 
 const BlogItem = ({ id, image, details, title }) => (
   <div className="blog_item">
@@ -18,6 +18,9 @@ const BlogItem = ({ id, image, details, title }) => (
     <div className="container">
       <DetailsBox {...details} />
       <TextBox>{title}</TextBox>
+      <Link to={editPostsPath(id)}>
+        Edit
+      </Link>
       <LikeContainer postId={id} />
     </div>
   </div>
