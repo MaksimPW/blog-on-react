@@ -16,3 +16,19 @@ export function fetchPost(id) {
     }
   };
 }
+
+export function updatePost(id, values) {
+  return {
+    [API_CALL]: {
+      endpoint: Api.update.endpoint(id),
+      method: Api.update.method,
+      query: {},
+      payload: values,
+      types: [
+        types.FETCH_POST_REQUEST,
+        types.FETCH_POST_SUCCESS,
+        types.FETCH_POST_ERROR
+      ]
+    }
+  };
+}

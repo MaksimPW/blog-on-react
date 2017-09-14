@@ -36,7 +36,7 @@ class Contacts extends React.Component {
   }
 
   render() {
-    return(
+    return (
       <div>
         <h1>Contacts</h1>
         <form onSubmit={this.onSubmit}>
