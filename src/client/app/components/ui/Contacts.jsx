@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { mapValues, assign } from 'lodash/object';
 import classNames from 'classnames';
@@ -84,6 +85,13 @@ class Text extends React.Component {
   }
 }
 
+Text.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string,
+  fieldRef: PropTypes.func,
+  error: PropTypes.object
+};
+
 class TextArea extends React.Component {
   render() {
     const { label, name, fieldRef } = this.props;
@@ -101,3 +109,9 @@ class TextArea extends React.Component {
     );
   }
 }
+
+TextArea.propTypes = {
+  label: PropTypes.string,
+  name: PropTypes.string,
+  fieldRef: PropTypes.func
+};
