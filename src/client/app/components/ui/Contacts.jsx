@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import { mapValues, assign } from 'lodash/object';
@@ -59,6 +60,10 @@ class Contacts extends React.Component {
           />
           <input type="submit" value="Submit" />
         </form>
+        <Helmet title="Обратная связь" >
+          <meta name="keywords" content="контакты обратная связь" />
+          <meta name="description" content="Связаться с автором ресурса" />
+        </Helmet>
       </div>
     );
   }
