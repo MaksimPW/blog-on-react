@@ -3,32 +3,7 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import classNames from 'classnames';
 
-const renderField =
-  ({ input, label, type, meta: { touched, error, warning } }) => (
-    <div className={classNames('ui field', { error })}>
-      <label>{label}</label>
-      <input className='ui input' {...input} type={type} />
-      {
-        touched && (
-          error && (
-            <div className='ui red label'>{error}</div>
-          ) || (
-            warning && (
-              <div className='ui yellow label'>{warning}</div>
-            )
-          )
-        )
-      }
-    </div>
-  );
-
-renderField.propTypes = {
-  input: PropTypes.object,
-  label: PropTypes.string,
-  type: PropTypes.string,
-  meta: PropTypes.object
-};
-
+import FormField from './../elements/FormField';
 
 class EditPostView extends React.Component {
   constructor(props) {
@@ -50,13 +25,13 @@ class EditPostView extends React.Component {
         <form onSubmit={handleSubmit} className='ui form'>
           <Field
             label='Title'
-            component={renderField}
+            component={FormField}
             type='text'
             name='title'
           />
           <Field
             label='Author'
-            component={renderField}
+            component={FormField}
             type='text'
             name='author'
           />
