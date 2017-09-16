@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
-import classNames from 'classnames';
 
-import FormField from './../elements/FormField';
+import FormPost from './../elements/FormPost';
 
 class EditPostView extends React.Component {
   constructor(props) {
@@ -20,28 +18,13 @@ class EditPostView extends React.Component {
   renderEdit() {
     const { handleSubmit, pristine, submitting, reset } = this.props;
     return (
-      <div>
-        <h1>Edit Post</h1>
-        <form onSubmit={handleSubmit} className='ui form'>
-          <Field
-            label='Title'
-            component={FormField}
-            type='text'
-            name='title'
-          />
-          <Field
-            label='Author'
-            component={FormField}
-            type='text'
-            name='author'
-          />
-          {
-            (!pristine && !submitting) &&
-            <button className='ui button' onClick={reset}>Clear</button>
-          }
-          <input type='submit' className='ui submit' value='Update' />
-        </form>
-      </div>
+      <FormPost
+        label='Update'
+        handleSubmit={handleSubmit}
+        pristine={pristine}
+        submitting={submitting}
+        reset={reset}
+      />
     );
   }
 }

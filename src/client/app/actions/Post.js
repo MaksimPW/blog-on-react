@@ -32,3 +32,19 @@ export function updatePost(id, values) {
     }
   };
 }
+
+export function createPost(values) {
+  return {
+    [API_CALL]: {
+      endpoint: Api.create.endpoint,
+      method: Api.create.method,
+      query: {},
+      payload: values,
+      types: [
+        types.FETCH_POST_REQUEST,
+        types.FETCH_POST_SUCCESS,
+        types.FETCH_POST_ERROR
+      ]
+    }
+  };
+}
