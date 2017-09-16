@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Link from './../elements/Link';
+import { newPostsPath, contactsPath } from './../../helpers/routes/paths.js';
 
 const MainLayout = ({ children }) => (
   <div>
@@ -18,9 +19,13 @@ const Logo = () => (
     <Link to='/'>
       Blog
     </Link>
-    <br/>
-    <Link to='/contacts'>
+    <br />
+    <Link to={contactsPath}>
       Contacts
+    </Link>
+    <br />
+    <Link to={newPostsPath}>
+      Create post
     </Link>
   </div>
 );
