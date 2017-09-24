@@ -16,7 +16,7 @@ function APICall({ endpoint, method, query, payload }) {
       r = r.send(payload);
 
     r.end((error, data) => (
-      error ? reject(data) : resolve(data)
+      error ? reject(data) : resolve(data.body)
     ));
   });
 }
