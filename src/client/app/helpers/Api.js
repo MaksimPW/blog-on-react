@@ -8,6 +8,14 @@ const Api = ({
     endpoint: (id) => `/posts/${id}`,
     method: 'GET'
   },
+  update: {
+    endpoint: (id) => `/posts/${id}`,
+    method: 'PATCH'
+  },
+  create: {
+    endpoint: '/posts',
+    method: 'POST'
+  },
   addLike: {
     endpoint: (id) => `/posts/${id}/add_like`,
     method: 'PATCH'

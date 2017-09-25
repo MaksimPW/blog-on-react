@@ -1,7 +1,13 @@
 import PostsRoute from './Posts';
 import PostRoute from './Post';
+import EditPostRoute from './EditPost';
+import NewPostRoute from './NewPost';
+import ContactsRoute from './Contacts';
 
 export default () => ([
   PostsRoute,
-  PostRoute
+  PostRoute,
+  EditPostRoute,
+  NewPostRoute,
+  ContactsRoute
 ]);

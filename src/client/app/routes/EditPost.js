@@ -1,18 +1,18 @@
 import { fetchPost } from './../actions/Post';
-import { postsPath } from './../helpers/routes/paths';
+import { editPostsPath } from './../helpers/routes/paths';
 
 import initialLoad from './../helpers/initialLoad';
 
-import PostContainer from './../containers/PostContainer';
+import EditPostContainer from './../containers/EditPostContainer';
 
-const PostRoute = {
+const EditPostRoute = {
   exact: true,
-  path: postsPath(),
-  component: PostContainer,
+  path: editPostsPath(),
+  component: EditPostContainer,
   prepareData: (store, query, params) => {
     if (initialLoad()) return;
     return store.dispatch(fetchPost(params.id));
   }
 };
 
-export default PostRoute;
+export default EditPostRoute;
