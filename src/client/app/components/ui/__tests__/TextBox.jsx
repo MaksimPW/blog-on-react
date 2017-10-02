@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import { shallow } from 'enzyme';
 
 import TextBox from '../TextBox';
 
