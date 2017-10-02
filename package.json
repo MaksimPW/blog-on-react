@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start-dev": "node initializers/server/index.js",
     "test": "jest --config jest.config.json",
     "linter": "./node_modules/eslint/bin/eslint.js ./src/client/app --ext js,jsx"
   },

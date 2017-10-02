@@ -21,7 +21,7 @@ const Api = ({
     method: 'PATCH'
   },
 
-  defaultImage: 'http://localhost:3000/images/original/missing.png',
+  defaultImage: 'http://localhost:3000/system/posts/images/missing.jpg',
   formatDate: 'DD MMM YYYY'
 });
 
