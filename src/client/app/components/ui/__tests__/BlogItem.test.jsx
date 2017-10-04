@@ -1,8 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { shallow } from 'enzyme';
-
-import Link from './../../elements/Link';
 import BlogItem from './../BlogItem';
 
 import { Provider } from 'react-redux';
