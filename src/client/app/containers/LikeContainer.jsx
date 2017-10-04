@@ -12,7 +12,7 @@ const countLikesProps = (state, props) => {
     return state.post.entry.likes;
   } else {
     const index = _.findIndex(entries, post => post.id == props.postId);
-    return entries[index].likes;
+    return _.get(entries[index], 'likes', 0);
   }
 };
 

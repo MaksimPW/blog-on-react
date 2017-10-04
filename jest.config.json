@@ -1,5 +1,9 @@
 {
-  "moduleFileExtensions": ["js", "jsx"],
+  "moduleFileExtensions": [
+    "js",
+    "jsx",
+    "json"
+  ],
   "setupFiles": ["<rootDir>/utils/before_test.js"],
   "modulePaths": [
     "<rootDir>/src"
