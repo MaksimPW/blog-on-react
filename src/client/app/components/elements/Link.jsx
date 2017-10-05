@@ -10,7 +10,7 @@ if (global.__TEST__ == true) { // eslint-disable-line
 
   TestLink.propTypes = {
     to: PropTypes.string,
-    children: PropTypes.string
+    children: PropTypes.node
   };
 
   StandartLink = TestLink;

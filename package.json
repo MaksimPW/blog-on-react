@@ -54,6 +54,7 @@
     "babel-register": "^6.24.1",
     "css-loader": "^0.28.4",
     "enzyme": "^3.0.0",
+    "enzyme-adapter-react-15": "^1.0.1",
     "eslint": "^4.2.0",
     "eslint-plugin-destructuring": "^2.1.0",
     "eslint-plugin-import": "^2.7.0",
