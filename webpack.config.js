@@ -49,7 +49,8 @@ var config = {
     new webpack.DefinePlugin({
       __SERVER__: false,
       __CLIENT__: true,
-      __DEVELOPMENT__: true
+      __DEVELOPMENT__: true,
+      __TEST__: false
     }),
     new webpack.HotModuleReplacementPlugin()
   ]
