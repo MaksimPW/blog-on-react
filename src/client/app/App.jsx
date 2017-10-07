@@ -1,5 +1,6 @@
 /* eslint-disable import/max-dependencies */
 /* eslint-disable no-underscore-dangle */
+/* globals __DEVELOPMENT__ */
 
 import React from 'react';
 import {render} from 'react-dom';
@@ -63,9 +64,11 @@ class App extends React.Component {
   }
 }
 
-render(
-  <DevTools store={store} />,
-  document.getElementById('devtools')
-);
+if (__DEVELOPMENT__) {
+  render(
+    <DevTools store={store} />,
+    document.getElementById('devtools')
+  );
+}
 
 export default App;

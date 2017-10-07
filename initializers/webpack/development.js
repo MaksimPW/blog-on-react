@@ -3,10 +3,10 @@
 import path from 'path';
 import webpack from 'webpack';
 
-const BUILD_DIR = path.resolve(__dirname, 'src/client/public');
-const APP_DIR = path.resolve(__dirname, 'src/client/app');
+const BUILD_DIR = path.resolve(__dirname, '../../src/client/public');
+const APP_DIR = path.resolve(__dirname, '../../src/client/app');
 
-var config = {
+export default {
   entry: [
     'react-hot-loader/patch',
     'webpack-hot-middleware/client',
@@ -55,5 +55,3 @@ var config = {
     new webpack.HotModuleReplacementPlugin()
   ]
 };
-
-module.exports = config;
