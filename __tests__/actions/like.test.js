@@ -1,7 +1,7 @@
-import * as actions from '../../src/client/app/actions/Like';
-import * as types from '../../src/client/app/constants/actionTypes/LikeActionTypes';
-import Api from '../../src/client/app/helpers/Api';
-import { API_CALL } from '../../src/client/app/middleware/API';
+import * as actions from 'client/app/actions/Like';
+import * as types from 'client/app/constants/actionTypes/LikeActionTypes';
+import Api from 'client/app/helpers/Api';
+import { API_CALL } from 'client/app/middleware/API';
 
 describe('Like actions', () => {
   it('should fetchLikePost', () => {
