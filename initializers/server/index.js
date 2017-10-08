@@ -17,6 +17,9 @@ const express = require('express');
 
 const app = express();
 
+const morgan = require('morgan');
+app.use(morgan('combined'));
+
 app.use(express.static(path.join(process.cwd(), 'src', 'client', 'public')));
 
 app.set('views', __dirname);
