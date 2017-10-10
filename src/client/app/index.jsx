@@ -1,3 +1,5 @@
+/* globals __DEVELOPMENT__ */
+
 import React from 'react';
 import {render} from 'react-dom';
 
@@ -13,16 +15,18 @@ render(
   rootEl
 );
 
-module.hot.accept();
+if (__DEVELOPMENT__) {
+  module.hot.accept();
 
-if (module.hot) {
-  module.hot.accept('./App', () => {
-    const NextApp = require('./App').default;
-    render(
-      <AppContainer>
-        <NextApp/>
-      </AppContainer>,
-      rootEl
-    );
-  });
+  if (module.hot) {
+    module.hot.accept('./App', () => {
+      const NextApp = require('./App').default;
+      render(
+        <AppContainer>
+          <NextApp/>
+        </AppContainer>,
+        rootEl
+      );
+    });
+  }
 }

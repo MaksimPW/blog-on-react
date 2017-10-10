@@ -1,3 +1,5 @@
+/* globals __DEVELOPMENT__ */
+
 const path = require('path');
 require('app-module-path').addPath(path.join(process.cwd(), 'src'));
 
@@ -15,30 +17,37 @@ const express = require('express');
 
 const app = express();
 
+const morgan = require('morgan');
+app.use(morgan('combined'));
+
+app.use(express.static(path.join(process.cwd(), 'src', 'client', 'public')));
+
 app.set('views', __dirname);
 app.set('view engine', 'ejs');
 
-const webpack = require('webpack');
-const config = require('../../webpack.config.js');
-const webpackDev = require('webpack-dev-middleware');
-const webpackHot = require('webpack-hot-middleware');
-const compiler = webpack(config);
+if (__DEVELOPMENT__) {
+  const webpack = require('webpack');
+  const config = require('../webpack/development.js').default;
+  const webpackDev = require('webpack-dev-middleware');
+  const webpackHot = require('webpack-hot-middleware');
+  const compiler = webpack(config);
 
-app.use(
-  webpackDev(
-    compiler,
-    {
-      hot: true,
-      publicPath: config.output.publicPath,
-      stats: { colors: true }
-    }
-  )
-);
+  app.use(
+    webpackDev(
+      compiler,
+      {
+        hot: true,
+        publicPath: config.output.publicPath,
+        stats: { colors: true }
+      }
+    )
+  );
 
-app.use(webpackHot(compiler));
+  app.use(webpackHot(compiler));
+}
 
 app.get('*', require('./render').default);
 
 app.listen(port, function() {
-  console.log(`Server listening at ${host}:${port}`);
+  console.log(`Server listening at ${host}:${port} as ${process.env.NODE_ENV}`);
 })

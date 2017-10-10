@@ -7,6 +7,8 @@ import url from 'url';
 import _ from 'lodash';
 import { parse } from 'qs';
 
+import webpackAsset from './webpackAsset';
+
 import createStore from './../../src/client/app/store/index';
 import prepareData from './../../src/client/app/helpers/prepareData';
 
@@ -69,7 +71,7 @@ export default (req, res) => {
       res.status(200);
       res.render(
         'views/index',
-        { initialState, content, head }
+        { initialState, content, head, webpackAsset }
       );
     }).catch(() => {
       res.status(500);

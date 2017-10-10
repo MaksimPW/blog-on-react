@@ -1,5 +1,8 @@
+/* globals __DEVELOPMENT__ */
+
 const Api = ({
-  hostname: 'http://localhost:3000',
+  hostname:
+    __DEVELOPMENT__ ? 'http://localhost:3000' : 'http://localhost:3000',
   index: {
     endpoint: '/posts',
     method: 'GET'
